@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hamilton Capital | CMBS Distress Monitor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --ink: #1a1f2b;
+      --muted: #5b6472;
+      --line: #d7dbe2;
+      --bg: #f4f1ea;
+      --card: #ffffff;
+      --navy: #1c2b4a;
+      --gold: #b08a3e;
+      --up: #8b2e2e;
+      --down: #2b5f45;
+      --warn: #8a5a12;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    header {
+      background: var(--navy);
+      color: #f7f3ea;
+      padding: 22px 28px 18px;
+    }
+    header h1 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    header p { margin: 0; font-size: 13px; color: #c9c3b6; font-family: Arial, sans-serif; }
+    main { max-width: 1180px; margin: 0 auto; padding: 22px 18px 48px; }
+    .note {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 18px;
+      line-height: 1.45;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .kpi {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+    }
+    .kpi .lbl { font-family: Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .kpi .val { font-size: 26px; font-weight: 700; margin: 4px 0 2px; }
+    .kpi .sub { font-family: Arial, sans-serif; font-size: 11px; color: var(--muted); }
+    .kpi .chg.up { color: var(--up); }
+    .kpi .chg.down { color: var(--down); }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 16px 16px 10px;
+      margin-bottom: 14px;
+    }
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .alerts li { font-family: Arial, sans-serif; font-size: 13px; margin: 0 0 6px; }
+    .alert-flag { color: var(--up); font-weight: 700; }
+    .ok { color: var(--down); }
+    canvas { max-height: 340px; }
+    table { width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 12px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .src { font-family: Arial, sans-serif; font-size: 12px; line-height: 1.45; margin: 0 0 8px; }
+    .src a { color: var(--navy); }
+    footer {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hamilton Capital | CMBS Distress Monitor</h1>
+    <p id="asof">Public vendor prints. Missing months omitted, not interpolated.</p>
+  </header>
+  <main>
+    <p class="note">
+      Weekly rebuild from Trepp, CRED iQ, MBA, and Morningstar DBRS. Series are not interchangeable.
+      Trepp is 30-plus day CMBS delinquency. CRED iQ distress is delinquent and/or special servicing.
+      MBA is quarterly 30-plus day or REO. Alert rule: 25 bp month-over-month or 50 bp over three months on the latest adjacent prints.
+    </p>
+    <div class="kpis" id="kpis"></div>
+    <div class="panel">
+      <h2>Threshold flags (latest adjacent prints)</h2>
+      <ul class="alerts" id="alerts"></ul>
+    </div>
+    <div class="panel">
+      <h2>Trepp CMBS delinquency by property type</h2>
+      <canvas id="chartTrepp"></canvas>
+    </div>
+    <div class="panel">
+      <h2>MBA CMBS delinquency, long history</h2>
+      <canvas id="chartMba"></canvas>
+    </div>
+    <div class="panel">
+      <h2>CRED iQ distress and special servicing</h2>
+      <canvas id="chartCred"></canvas>
+    </div>
+    <div class="panel">
+      <h2>Latest prints</h2>
+      <table id="latest"></table>
+    </div>
+    <div class="panel">
+      <h2>History (all compiled points)</h2>
+      <div id="history"></div>
+    </div>
+    <div class="panel">
+      <h2>Sources</h2>
+      <div id="sources"></div>
+      <p class="note">Third-party examiner can verify each print from the named vendor report, date, and URL. Values are transcribed from those publications. Gaps remain where vendors did not publish a usable public print.</p>
+    </div>
+    <footer>Hamilton Capital. For internal research use. Not an offer or performance statement. Data as compiled on the as-of date in the header.</footer>
+  </main>
+  <script>
+    async function loadData() {
+      try {
+        const res = await fetch("data.json", { cache: "no-store" });
+        if (res.ok) return await res.json();
+      } catch (e) {}
+      return null;
+    }
+
+    function lastTwo(points) {
+      if (!points || points.length < 2) return null;
+      const a = points[points.length - 2];
+      const b = points[points.length - 1];
+      return { prior: a, latest: b, dBps: Math.round((b.value - a.value) * 100) };
+    }
+
+    function threeMonth(points) {
+      if (!points || points.length < 2) return null;
+      const latest = points[points.length - 1];
+      const [yy, mm] = latest.date.split("-").map(Number);
+      let targetM = mm - 3;
+      let targetY = yy;
+      if (targetM <= 0) { targetM += 12; targetY -= 1; }
+      const target = `${targetY}-${String(targetM).padStart(2, "0")}`;
+      let prior = null;
+      for (let i = points.length - 2; i >= 0; i--) {
+        if (points[i].date <= target) { prior = points[i]; break; }
+      }
+      if (!prior) prior = points[0];
+      return { prior, latest, dBps: Math.round((latest.value - prior.value) * 100) };
+    }
+
+    function fmt(n) { return n.toFixed(2) + "%"; }
+    function chgLabel(bps) {
+      if (bps === 0) return "unch";
+      const sign = bps > 0 ? "+" : "";
+      return sign + bps + " bp";
+    }
+
+    function drawLine(id, datasets) {
+      const labels = Array.from(new Set(datasets.flatMap(d => d.points.map(p => p.date)))).sort();
+      new Chart(document.getElementById(id), {
+        type: "line",
+        data: {
+          labels,
+          datasets: datasets.map((d, i) => ({
+            label: d.label,
+            data: labels.map(lab => {
+              const hit = d.points.find(p => p.date === lab);
+              return hit ? hit.value : null;
+            }),
+            borderColor: d.color,
+            backgroundColor: "transparent",
+            spanGaps: true,
+            tension: 0.15,
+            pointRadius: 2,
+            borderWidth: 2
+          }))
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "index", intersect: false },
+          plugins: { legend: { position: "bottom", labels: { boxWidth: 10, font: { size: 11 } } } },
+          scales: {
+            y: { ticks: { callback: v => v + "%" }, grid: { color: "#ece8e0" } },
+            x: { ticks: { maxRotation: 45, font: { size: 10 } }, grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    function render(DATA) {
+      document.getElementById("asof").textContent =
+        "Compiled " + DATA.meta.compiled + ". Latest Trepp print in file: " +
+        DATA.series.trepp_overall.points.slice(-1)[0].date +
+        ". Missing months omitted, not interpolated.";
+
+      const cards = [
+        ["Trepp overall", "trepp_overall"],
+        ["Trepp office", "trepp_office"],
+        ["Trepp multifamily", "trepp_multifamily"],
+        ["Trepp retail", "trepp_retail"],
+        ["Trepp lodging", "trepp_lodging"],
+        ["Trepp industrial", "trepp_industrial"],
+        ["CRED iQ distress", "crediq_distress"],
+        ["MBA CMBS (qtr)", "mba_cmbs_dq"]
+      ];
+      const kpi = document.getElementById("kpis");
+      cards.forEach(([label, key]) => {
+        const s = DATA.series[key];
+        const lt = lastTwo(s.points);
+        const latest = s.points[s.points.length - 1];
+        const chg = lt ? `<span class="chg ${lt.dBps > 0 ? "up" : lt.dBps < 0 ? "down" : ""}">${chgLabel(lt.dBps)} vs ${lt.prior.date}</span>` : "";
+        kpi.innerHTML += `<div class="kpi"><div class="lbl">${label}</div><div class="val">${fmt(latest.value)}</div><div class="sub">${latest.date} ${chg}</div></div>`;
+      });
+
+      const alerts = [];
+      Object.keys(DATA.series).forEach(key => {
+        const s = DATA.series[key];
+        const mom = lastTwo(s.points);
+        const q = threeMonth(s.points);
+        if (mom && Math.abs(mom.dBps) >= DATA.meta.alert_mom_bps) {
+          alerts.push(`<li><span class="alert-flag">FLAG</span> ${s.name}: ${chgLabel(mom.dBps)} from ${mom.prior.date} to ${mom.latest.date} (${fmt(mom.prior.value)} to ${fmt(mom.latest.value)}). Threshold 25 bp on adjacent prints.</li>`);
+        }
+        if (q && Math.abs(q.dBps) >= DATA.meta.alert_3m_bps) {
+          alerts.push(`<li><span class="alert-flag">FLAG</span> ${s.name}: ${chgLabel(q.dBps)} from ${q.prior.date} to ${q.latest.date} over the three-month window. Threshold 50 bp.</li>`);
+        }
+      });
+      document.getElementById("alerts").innerHTML = alerts.length
+        ? alerts.join("")
+        : `<li class="ok">No series currently exceeds the 25 bp adjacent-print or 50 bp three-month rule.</li>`;
+
+      const colors = {
+        overall: "#1c2b4a", office: "#8b2e2e", mf: "#2b5f45",
+        retail: "#b08a3e", lodging: "#3d5a80", ind: "#6b7280"
+      };
+      document.getElementById("chartTrepp").parentNode.style.height = "360px";
+      drawLine("chartTrepp", [
+        { label: "Overall", points: DATA.series.trepp_overall.points, color: colors.overall },
+        { label: "Office", points: DATA.series.trepp_office.points, color: colors.office },
+        { label: "Multifamily", points: DATA.series.trepp_multifamily.points, color: colors.mf },
+        { label: "Retail", points: DATA.series.trepp_retail.points, color: colors.retail },
+        { label: "Lodging", points: DATA.series.trepp_lodging.points, color: colors.lodging },
+        { label: "Industrial", points: DATA.series.trepp_industrial.points, color: colors.ind }
+      ]);
+      document.getElementById("chartMba").parentNode.style.height = "320px";
+      drawLine("chartMba", [
+        { label: "MBA CMBS DQ", points: DATA.series.mba_cmbs_dq.points, color: colors.overall }
+      ]);
+      document.getElementById("chartCred").parentNode.style.height = "320px";
+      drawLine("chartCred", [
+        { label: "CRED iQ distress", points: DATA.series.crediq_distress.points, color: colors.office },
+        { label: "CRED iQ special servicing", points: DATA.series.crediq_special_servicing.points, color: colors.overall },
+        { label: "CRED iQ MF top-50 distress", points: DATA.series.crediq_mf_distress_top50.points, color: colors.mf }
+      ]);
+
+      const latestRows = Object.keys(DATA.series).map(key => {
+        const s = DATA.series[key];
+        const p = s.points[s.points.length - 1];
+        const lt = lastTwo(s.points);
+        return `<tr><td>${s.name}</td><td>${s.vendor}</td><td class="num">${p.date}</td><td class="num">${fmt(p.value)}</td><td class="num">${lt ? chgLabel(lt.dBps) : "n/a"}</td></tr>`;
+      }).join("");
+      document.getElementById("latest").innerHTML =
+        `<thead><tr><th>Series</th><th>Vendor</th><th class="num">Date</th><th class="num">Level</th><th class="num">vs prior print</th></tr></thead><tbody>${latestRows}</tbody>`;
+
+      const hist = document.getElementById("history");
+      Object.keys(DATA.series).forEach(key => {
+        const s = DATA.series[key];
+        const rows = s.points.map(p => `<tr><td>${p.date}</td><td class="num">${fmt(p.value)}</td></tr>`).join("");
+        hist.innerHTML += `<h3 style="font-size:14px;margin:14px 0 6px">${s.name}</h3><p class="note">${s.notes || s.vendor}</p><table><thead><tr><th>Date</th><th class="num">Rate</th></tr></thead><tbody>${rows}</tbody></table>`;
+      });
+
+      document.getElementById("sources").innerHTML = DATA.sources.map(s =>
+        `<p class="src"><strong>${s.id}. ${s.name}</strong> (${s.document}). Date: ${s.dates}. Location: ${s.location}. URL: <a href="${s.url}" target="_blank" rel="noopener">${s.url}</a></p>`
+      ).join("");
+    }
+
+    loadData().then(d => {
+      if (!d) {
+        document.getElementById("alerts").innerHTML = "<li>data.json did not load. Open this dashboard from the GitHub repo or a local folder that also contains data.json.</li>";
+        return;
+      }
+      render(d);
+    });
+  </script>
+</body>
+</html>
