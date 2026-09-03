@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "firm": "Hamilton Capital",
+    "title": "CMBS Distress Monitor",
+    "as_of": "2026-09-03",
+    "compiled": "2026-09-03",
+    "history_policy": "Only verified public prints. Missing months are omitted, not interpolated.",
+    "alert_mom_bps": 25,
+    "alert_3m_bps": 50
+  },
+  "series": {
+    "mba_cmbs_dq": {
+      "name": "MBA CMBS delinquency (30+ days or REO)",
+      "vendor": "Mortgage Bankers Association (source data: Trepp LLC)",
+      "frequency": "quarterly",
+      "unit": "percent",
+      "notes": "MBA quarterly commercial/multifamily delinquency report. CMBS measure is 30+ days delinquent or REO. Not directly comparable to bank, life, or agency rates.",
+      "points": [
+        {"date": "2006-12", "value": 0.39},
+        {"date": "2007-12", "value": 0.39},
+        {"date": "2008-12", "value": 1.17},
+        {"date": "2009-12", "value": 5.68},
+        {"date": "2010-12", "value": 8.67},
+        {"date": "2011-12", "value": 8.51},
+        {"date": "2012-12", "value": 8.71},
+        {"date": "2013-12", "value": 6.86},
+        {"date": "2014-12", "value": 5.36},
+        {"date": "2015-12", "value": 4.73},
+        {"date": "2016-12", "value": 4.53},
+        {"date": "2017-12", "value": 4.08},
+        {"date": "2018-12", "value": 2.77},
+        {"date": "2019-12", "value": 2.07},
+        {"date": "2020-12", "value": 7.50},
+        {"date": "2021-09", "value": 4.86},
+        {"date": "2021-12", "value": 4.02},
+        {"date": "2022-03", "value": 3.36},
+        {"date": "2022-06", "value": 2.95},
+        {"date": "2022-09", "value": 2.77},
+        {"date": "2022-12", "value": 2.90},
+        {"date": "2023-03", "value": 3.00},
+        {"date": "2023-06", "value": 3.82},
+        {"date": "2023-12", "value": 4.30},
+        {"date": "2024-03", "value": 4.35},
+        {"date": "2024-06", "value": 4.82},
+        {"date": "2024-09", "value": 5.15},
+        {"date": "2024-12", "value": 5.78},
+        {"date": "2025-03", "value": 5.91},
+        {"date": "2025-06", "value": 6.36},
+        {"date": "2025-09", "value": 6.58},
+        {"date": "2025-12", "value": 6.58},
+        {"date": "2026-03", "value": 7.28}
+      ]
+    },
+    "trepp_overall": {
+      "name": "Trepp US CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Headline Trepp CMBS delinquency rate. Performing matured balloons are excluded from the headline rate.",
+      "points": [
+        {"date": "2020-01", "value": 2.04},
+        {"date": "2020-03", "value": 2.29},
+        {"date": "2020-04", "value": 2.29},
+        {"date": "2020-05", "value": 7.15},
+        {"date": "2020-06", "value": 10.32},
+        {"date": "2021-01", "value": 7.58},
+        {"date": "2022-12", "value": 3.04},
+        {"date": "2023-12", "value": 4.51},
+        {"date": "2024-12", "value": 6.57},
+        {"date": "2025-05", "value": 7.08},
+        {"date": "2025-07", "value": 7.23},
+        {"date": "2025-08", "value": 7.29},
+        {"date": "2025-09", "value": 7.23},
+        {"date": "2025-10", "value": 7.46},
+        {"date": "2025-11", "value": 7.26},
+        {"date": "2025-12", "value": 7.30},
+        {"date": "2026-01", "value": 7.47},
+        {"date": "2026-02", "value": 7.14},
+        {"date": "2026-03", "value": 7.55},
+        {"date": "2026-04", "value": 7.54},
+        {"date": "2026-05", "value": 7.55},
+        {"date": "2026-06", "value": 7.35},
+        {"date": "2026-07", "value": 7.86},
+        {"date": "2026-08", "value": 7.85}
+      ]
+    },
+    "trepp_office": {
+      "name": "Trepp office CMBS delinquency",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "points": [
+        {"date": "2019-12", "value": 1.85},
+        {"date": "2020-03", "value": 1.86},
+        {"date": "2020-04", "value": 1.92},
+        {"date": "2020-05", "value": 2.40},
+        {"date": "2020-06", "value": 2.66},
+        {"date": "2020-12", "value": 2.19},
+        {"date": "2021-12", "value": 2.55},
+        {"date": "2022-12", "value": 1.58},
+        {"date": "2023-12", "value": 5.82},
+        {"date": "2024-12", "value": 11.01},
+        {"date": "2025-09", "value": 11.13},
+        {"date": "2025-12", "value": 11.31},
+        {"date": "2026-01", "value": 12.34},
+        {"date": "2026-02", "value": 11.20},
+        {"date": "2026-03", "value": 11.71},
+        {"date": "2026-04", "value": 11.69},
+        {"date": "2026-05", "value": 11.53},
+        {"date": "2026-06", "value": 11.57},
+        {"date": "2026-07", "value": 11.91},
+        {"date": "2026-08", "value": 12.00}
+      ]
+    },
+    "trepp_multifamily": {
+      "name": "Trepp multifamily CMBS delinquency",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "points": [
+        {"date": "2019-12", "value": 1.78},
+        {"date": "2020-03", "value": 1.63},
+        {"date": "2020-04", "value": 1.92},
+        {"date": "2020-05", "value": 3.25},
+        {"date": "2020-06", "value": 3.29},
+        {"date": "2020-12", "value": 2.77},
+        {"date": "2021-12", "value": 1.76},
+        {"date": "2022-12", "value": 2.17},
+        {"date": "2023-12", "value": 2.62},
+        {"date": "2024-12", "value": 4.58},
+        {"date": "2025-09", "value": 6.59},
+        {"date": "2025-12", "value": 6.64},
+        {"date": "2026-01", "value": 6.94},
+        {"date": "2026-02", "value": 6.85},
+        {"date": "2026-03", "value": 7.15},
+        {"date": "2026-04", "value": 7.71},
+        {"date": "2026-05", "value": 6.95},
+        {"date": "2026-06", "value": 7.23},
+        {"date": "2026-07", "value": 7.69},
+        {"date": "2026-08", "value": 7.69}
+      ]
+    },
+    "trepp_retail": {
+      "name": "Trepp retail CMBS delinquency",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "points": [
+        {"date": "2019-12", "value": 4.24},
+        {"date": "2020-03", "value": 3.89},
+        {"date": "2020-04", "value": 3.67},
+        {"date": "2020-05", "value": 10.14},
+        {"date": "2020-06", "value": 18.07},
+        {"date": "2020-12", "value": 12.95},
+        {"date": "2021-12", "value": 8.27},
+        {"date": "2022-12", "value": 6.97},
+        {"date": "2023-12", "value": 6.47},
+        {"date": "2024-12", "value": 7.43},
+        {"date": "2025-09", "value": 6.76},
+        {"date": "2025-12", "value": 6.92},
+        {"date": "2026-01", "value": 7.04},
+        {"date": "2026-02", "value": 6.30},
+        {"date": "2026-03", "value": 6.62},
+        {"date": "2026-04", "value": 6.31},
+        {"date": "2026-05", "value": 6.61},
+        {"date": "2026-06", "value": 6.91},
+        {"date": "2026-07", "value": 6.96},
+        {"date": "2026-08", "value": 7.20}
+      ]
+    },
+    "trepp_lodging": {
+      "name": "Trepp lodging CMBS delinquency",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "points": [
+        {"date": "2019-12", "value": 1.42},
+        {"date": "2020-03", "value": 1.53},
+        {"date": "2020-04", "value": 2.71},
+        {"date": "2020-05", "value": 19.13},
+        {"date": "2020-06", "value": 24.30},
+        {"date": "2020-12", "value": 19.80},
+        {"date": "2021-12", "value": 8.79},
+        {"date": "2022-12", "value": 4.40},
+        {"date": "2023-12", "value": 5.40},
+        {"date": "2024-12", "value": 6.14},
+        {"date": "2025-04", "value": 7.85},
+        {"date": "2025-09", "value": 5.81},
+        {"date": "2025-12", "value": 6.61},
+        {"date": "2026-01", "value": 5.56},
+        {"date": "2026-02", "value": 5.94},
+        {"date": "2026-03", "value": 7.31},
+        {"date": "2026-04", "value": 6.52},
+        {"date": "2026-05", "value": 6.01},
+        {"date": "2026-06", "value": 5.22},
+        {"date": "2026-07", "value": 5.35},
+        {"date": "2026-08", "value": 5.84}
+      ]
+    },
+    "trepp_industrial": {
+      "name": "Trepp industrial CMBS delinquency",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "points": [
+        {"date": "2019-12", "value": 1.36},
+        {"date": "2020-03", "value": 1.35},
+        {"date": "2020-04", "value": 1.36},
+        {"date": "2020-05", "value": 1.82},
+        {"date": "2020-06", "value": 1.57},
+        {"date": "2020-12", "value": 1.14},
+        {"date": "2021-12", "value": 0.53},
+        {"date": "2022-12", "value": 0.42},
+        {"date": "2023-12", "value": 0.57},
+        {"date": "2024-12", "value": 0.29},
+        {"date": "2025-09", "value": 0.56},
+        {"date": "2025-12", "value": 0.80},
+        {"date": "2026-01", "value": 0.62},
+        {"date": "2026-02", "value": 0.67},
+        {"date": "2026-03", "value": 0.65},
+        {"date": "2026-04", "value": 0.96},
+        {"date": "2026-05", "value": 1.31},
+        {"date": "2026-06", "value": 1.20},
+        {"date": "2026-07", "value": 1.13},
+        {"date": "2026-08", "value": 1.14}
+      ]
+    },
+    "trepp_special_servicing": {
+      "name": "Trepp CMBS special servicing rate",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "points": [
+        {"date": "2024-06", "value": 8.23},
+        {"date": "2025-04", "value": 10.17},
+        {"date": "2025-05", "value": 10.30},
+        {"date": "2025-06", "value": 10.57},
+        {"date": "2025-07", "value": 10.48},
+        {"date": "2025-08", "value": 10.29},
+        {"date": "2026-05", "value": 10.86}
+      ]
+    },
+    "crediq_distress": {
+      "name": "CRED iQ overall CMBS distress (delinquent and/or special servicing)",
+      "vendor": "CRED iQ",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Conduit and SASB universe as published in CRED iQ monthly notes. Universe and methodology differ from Trepp. Prints are as published; the firm has used more than one sample frame.",
+      "points": [
+        {"date": "2022-07", "value": 4.83},
+        {"date": "2024-12", "value": 10.60},
+        {"date": "2025-04", "value": 10.30},
+        {"date": "2025-08", "value": 11.78},
+        {"date": "2025-11", "value": 11.63},
+        {"date": "2026-01", "value": 11.98},
+        {"date": "2026-02", "value": 11.63},
+        {"date": "2026-04", "value": 11.08},
+        {"date": "2026-05", "value": 11.86},
+        {"date": "2026-07", "value": 10.91}
+      ]
+    },
+    "crediq_special_servicing": {
+      "name": "CRED iQ special servicing rate",
+      "vendor": "CRED iQ",
+      "frequency": "monthly",
+      "unit": "percent",
+      "points": [
+        {"date": "2022-07", "value": 4.47},
+        {"date": "2024-12", "value": 9.80},
+        {"date": "2025-08", "value": 10.95},
+        {"date": "2025-11", "value": 11.21},
+        {"date": "2026-01", "value": 11.10},
+        {"date": "2026-02", "value": 11.13},
+        {"date": "2026-04", "value": 10.61},
+        {"date": "2026-05", "value": 11.25},
+        {"date": "2026-07", "value": 10.38}
+      ]
+    },
+    "crediq_mf_distress_top50": {
+      "name": "CRED iQ multifamily distress, top 50 CMBS markets",
+      "vendor": "CRED iQ",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Balance-weighted distress in the 50 largest US CMBS markets. Not the same frame as the all-universe CRED iQ distress rate.",
+      "points": [
+        {"date": "2026-02", "value": 6.0},
+        {"date": "2026-05", "value": 10.95},
+        {"date": "2026-07", "value": 13.0}
+      ]
+    },
+    "dbrs_overall": {
+      "name": "Morningstar DBRS overall CMBS delinquency",
+      "vendor": "Morningstar DBRS",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Multi-borrower and SASB combined. Methodology differs from Trepp.",
+      "points": [
+        {"date": "2026-06", "value": 8.58},
+        {"date": "2026-07", "value": 8.76}
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Trepp LLC",
+      "document": "Monthly CMBS Delinquency Report and TreppTalk summaries",
+      "dates": "May 2020 through August 2026 prints",
+      "location": "trepp.com / TreppTalk",
+      "url": "https://www.trepp.com/trepptalk/topic/cmbs-delinquency-rate"
+    },
+    {
+      "id": "S2",
+      "name": "Mortgage Bankers Association",
+      "document": "Commercial/Multifamily Mortgage Delinquency Rates, Q1 2026",
+      "dates": "Published June 2, 2026; historical year-end series from 2006",
+      "location": "mba.org",
+      "url": "https://www.mba.org/docs/default-source/research-and-forecasts/cmf-delinquency-rates/1q26cmfdelinquency.pdf"
+    },
+    {
+      "id": "S3",
+      "name": "CRED iQ",
+      "document": "Monthly CMBS distress notes and top-50 market reports",
+      "dates": "July 2022 through July 2026 prints as published",
+      "location": "cred-iq.com/blog",
+      "url": "https://cred-iq.com/blog/"
+    },
+    {
+      "id": "S4",
+      "name": "Morningstar DBRS",
+      "document": "U.S. CMBS Delinquency Report, July 2026",
+      "dates": "July 2026",
+      "location": "dbrs.morningstar.com",
+      "url": "https://dbrs.morningstar.com/research/488230"
+    },
+    {
+      "id": "S5",
+      "name": "CRE Finance Council / Deutsche Bank compilation of Trepp",
+      "document": "CREFC Update on CMBS Loan Performance (May 2026)",
+      "dates": "Year-end property-type delinquencies 2019-2025 and May 2026",
+      "location": "CREFC member update",
+      "url": "https://assets.informz.net/cmbs/data/images/CREFC%20Update%20on%20CMBS%20Loan%20Performance%20(May%202026).pdf"
+    },
+    {
+      "id": "S6",
+      "name": "CRE Daily",
+      "document": "CMBS Delinquency Holds at 7.85% as Office Risk Rises",
+      "dates": "September 3, 2026 (August 2026 Trepp print)",
+      "location": "credaily.com",
+      "url": "https://www.credaily.com/briefs/cmbs-delinquency-holds-at-7-85-as-office-risk-rises/"
+    }
+  ]
+}
