@@ -2,8 +2,8 @@
   "meta": {
     "firm": "Hamilton Capital",
     "title": "CMBS Distress Monitor",
-    "as_of": "2026-09-03",
-    "compiled": "2026-09-03",
+    "as_of": "2026-09-07",
+    "compiled": "2026-09-07",
     "history_policy": "Only verified public prints. Missing months are omitted, not interpolated.",
     "alert_mom_bps": 25,
     "alert_3m_bps": 50
@@ -14,7 +14,7 @@
       "vendor": "Mortgage Bankers Association (source data: Trepp LLC)",
       "frequency": "quarterly",
       "unit": "percent",
-      "notes": "MBA quarterly commercial/multifamily delinquency report. CMBS measure is 30+ days delinquent or REO. Not directly comparable to bank, life, or agency rates.",
+      "notes": "MBA quarterly commercial/multifamily delinquency report. CMBS measure is 30+ days delinquent or REO. Not directly comparable to bank, life, or agency rates. The separate MBA CREF Loan Performance Survey uses a different CMBS definition and is not mixed into this series.",
       "points": [
         {"date": "2006-12", "value": 0.39},
         {"date": "2007-12", "value": 0.39},
@@ -237,7 +237,9 @@
         {"date": "2025-06", "value": 10.57},
         {"date": "2025-07", "value": 10.48},
         {"date": "2025-08", "value": 10.29},
-        {"date": "2026-05", "value": 10.86}
+        {"date": "2026-05", "value": 10.86},
+        {"date": "2026-06", "value": 11.20},
+        {"date": "2026-07", "value": 11.09}
       ]
     },
     "crediq_distress": {
@@ -305,15 +307,15 @@
       "id": "S1",
       "name": "Trepp LLC",
       "document": "Monthly CMBS Delinquency Report and TreppTalk summaries",
-      "dates": "May 2020 through August 2026 prints",
+      "dates": "May 2020 through August 2026 delinquency prints",
       "location": "trepp.com / TreppTalk",
-      "url": "https://www.trepp.com/trepptalk/topic/cmbs-delinquency-rate"
+      "url": "https://www.trepp.com/trepptalk/overall-cmbs-delinquency-rate-decreased-in-august-2026"
     },
     {
       "id": "S2",
       "name": "Mortgage Bankers Association",
       "document": "Commercial/Multifamily Mortgage Delinquency Rates, Q1 2026",
-      "dates": "Published June 2, 2026; historical year-end series from 2006",
+      "dates": "Published June 2, 2026; historical year-end series from 2006. Q2 2026 edition of this report not located as of September 7, 2026.",
       "location": "mba.org",
       "url": "https://www.mba.org/docs/default-source/research-and-forecasts/cmf-delinquency-rates/1q26cmfdelinquency.pdf"
     },
@@ -321,15 +323,15 @@
       "id": "S3",
       "name": "CRED iQ",
       "document": "Monthly CMBS distress notes and top-50 market reports",
-      "dates": "July 2022 through July 2026 prints as published",
+      "dates": "July 2022 through July 2026 prints as published in the conduit/SASB notes. August 2026 overall CMBS rates were described as not yet finalized.",
       "location": "cred-iq.com/blog",
-      "url": "https://cred-iq.com/blog/"
+      "url": "https://cred-iq.com/blog/2026/07/31/cmbs-distress-hits-a-2026-high/"
     },
     {
       "id": "S4",
       "name": "Morningstar DBRS",
       "document": "U.S. CMBS Delinquency Report, July 2026",
-      "dates": "July 2026",
+      "dates": "Report dated August 28, 2026; July 2026 print. August 2026 report not located as of September 7, 2026.",
       "location": "dbrs.morningstar.com",
       "url": "https://dbrs.morningstar.com/research/488230"
     },
@@ -348,6 +350,22 @@
       "dates": "September 3, 2026 (August 2026 Trepp print)",
       "location": "credaily.com",
       "url": "https://www.credaily.com/briefs/cmbs-delinquency-holds-at-7-85-as-office-risk-rises/"
+    },
+    {
+      "id": "S7",
+      "name": "Trepp LLC",
+      "document": "TreppTalk: CMBS Special Servicing Rate Climbs in June 2026",
+      "dates": "Published July 13, 2026; June 2026 print 11.20%",
+      "location": "trepp.com / TreppTalk",
+      "url": "https://www.trepp.com/trepptalk/special-servicing-rate-climbs-in-june-2026"
+    },
+    {
+      "id": "S8",
+      "name": "Trepp LLC",
+      "document": "TreppTalk: CMBS Special Servicing Rate Declined in July 2026",
+      "dates": "Published August 10, 2026; July 2026 print 11.09%",
+      "location": "trepp.com / TreppTalk",
+      "url": "https://www.trepp.com/trepptalk/cmbs-special-servicing-july-2026"
     }
   ]
 }
