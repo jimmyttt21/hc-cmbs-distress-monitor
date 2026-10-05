@@ -102,8 +102,20 @@
     </p>
     <div class="kpis" id="kpis"></div>
     <div class="panel">
+      <h2>Conclusions from verified, non-stale inputs</h2>
+      <ul class="alerts" id="conclusions"></ul>
+    </div>
+    <div class="panel">
       <h2>Threshold flags (latest adjacent prints)</h2>
       <ul class="alerts" id="alerts"></ul>
+    </div>
+    <div class="panel">
+      <h2>Named events</h2>
+      <div id="events"></div>
+    </div>
+    <div class="panel">
+      <h2>Rating actions</h2>
+      <div id="ratings"></div>
     </div>
     <div class="panel">
       <h2>Trepp CMBS delinquency by property type</h2>
@@ -206,9 +218,10 @@
 
     function render(DATA) {
       document.getElementById("asof").textContent =
-        "Compiled " + DATA.meta.compiled + ". Latest Trepp print in file: " +
+        "Compiled " + DATA.meta.compiled + ". Newest verified observation period: " +
+        DATA.meta.as_of + ". Trepp 30+ last verified " +
         DATA.series.trepp_overall.points.slice(-1)[0].date +
-        ". Missing months omitted, not interpolated.";
+        ". Each series keeps its own date. STALE means a newer vendor period was not verified. Missing months omitted, not interpolated.";
 
       const cards = [
         ["Trepp overall", "trepp_overall"],
@@ -226,7 +239,8 @@
         const lt = lastTwo(s.points);
         const latest = s.points[s.points.length - 1];
         const chg = lt ? `<span class="chg ${lt.dBps > 0 ? "up" : lt.dBps < 0 ? "down" : ""}">${chgLabel(lt.dBps)} vs ${lt.prior.date}</span>` : "";
-        kpi.innerHTML += `<div class="kpi"><div class="lbl">${label}</div><div class="val">${fmt(latest.value)}</div><div class="sub">${latest.date} ${chg}</div></div>`;
+        const stale = s.stale ? ` <span class="stale">STALE</span>` : "";
+        kpi.innerHTML += `<div class="kpi"><div class="lbl">${label}</div><div class="val">${fmt(latest.value)}</div><div class="sub">Last verified ${latest.date}${stale} ${chg}</div></div>`;
       });
 
       const alerts = [];
@@ -244,6 +258,15 @@
       document.getElementById("alerts").innerHTML = alerts.length
         ? alerts.join("")
         : `<li class="ok">No series currently exceeds the 25 bp adjacent-print or 50 bp three-month rule.</li>`;
+      const conclusions = (DATA.conclusions || []).map(t => `<li>${t}</li>`)
+        .concat((DATA.withheld || []).map(t => `<li>${t}</li>`));
+      document.getElementById("conclusions").innerHTML = conclusions.join("") || "<li>No conclusion text in data.json.</li>";
+      document.getElementById("events").innerHTML = (DATA.events || []).map(e =>
+        `<p class="src"><strong>${e.date} ${e.type}.</strong> ${e.detail} Source: ${e.source}.</p>`
+      ).join("") || "<p class=\"note\">No named events in this file.</p>";
+      document.getElementById("ratings").innerHTML = (DATA.ratings || []).map(r =>
+        `<p class="src"><strong>${r.date} ${r.agency} ${r.action}.</strong> ${r.detail} Document: ${r.document}. <a href="${r.url}" target="_blank" rel="noopener">${r.url}</a></p>`
+      ).join("") || "<p class=\"note\">No rating action in this file.</p>";
 
       const colors = {
         overall: "#1c2b4a", office: "#8b2e2e", mf: "#2b5f45",
@@ -273,7 +296,8 @@
         const s = DATA.series[key];
         const p = s.points[s.points.length - 1];
         const lt = lastTwo(s.points);
-        return `<tr><td>${s.name}</td><td>${s.vendor}</td><td class="num">${p.date}</td><td class="num">${fmt(p.value)}</td><td class="num">${lt ? chgLabel(lt.dBps) : "n/a"}</td></tr>`;
+        const mark = s.stale ? " STALE" : "";
+        return `<tr><td>${s.name}${mark}</td><td>${s.vendor}</td><td class="num">${p.date}</td><td class="num">${fmt(p.value)}</td><td class="num">${lt ? chgLabel(lt.dBps) : "n/a"}</td></tr>`;
       }).join("");
       document.getElementById("latest").innerHTML =
         `<thead><tr><th>Series</th><th>Vendor</th><th class="num">Date</th><th class="num">Level</th><th class="num">vs prior print</th></tr></thead><tbody>${latestRows}</tbody>`;
