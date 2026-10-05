@@ -2,11 +2,12 @@
   "meta": {
     "firm": "Hamilton Capital",
     "title": "CMBS Distress Monitor",
-    "as_of": "2026-09-07",
-    "compiled": "2026-09-07",
+    "as_of": "2026-09-30",
+    "compiled": "2026-10-05",
     "history_policy": "Only verified public prints. Missing months are omitted, not interpolated.",
     "alert_mom_bps": 25,
-    "alert_3m_bps": 50
+    "alert_3m_bps": 50,
+    "as_of_note": "Newest verified observation period in the file is September 2026 (Trepp delinquency and KBRA performance). Not the compile date."
   },
   "series": {
     "mba_cmbs_dq": {
@@ -14,42 +15,147 @@
       "vendor": "Mortgage Bankers Association (source data: Trepp LLC)",
       "frequency": "quarterly",
       "unit": "percent",
-      "notes": "MBA quarterly commercial/multifamily delinquency report. CMBS measure is 30+ days delinquent or REO. Not directly comparable to bank, life, or agency rates. The separate MBA CREF Loan Performance Survey uses a different CMBS definition and is not mixed into this series.",
+      "notes": "MBA quarterly commercial/multifamily delinquency report. CMBS measure is 30+ days delinquent or REO. Q2 2026 print is 6.53%, published September 28, 2026, down 0.42 percentage points from Q1 per the MBA release. The file Q1 point remains 7.28 and was not rewritten; 6.53 plus 0.42 does not equal 7.28. The CREF Loan Performance Survey is a different series and is not mixed in.",
       "points": [
-        {"date": "2006-12", "value": 0.39},
-        {"date": "2007-12", "value": 0.39},
-        {"date": "2008-12", "value": 1.17},
-        {"date": "2009-12", "value": 5.68},
-        {"date": "2010-12", "value": 8.67},
-        {"date": "2011-12", "value": 8.51},
-        {"date": "2012-12", "value": 8.71},
-        {"date": "2013-12", "value": 6.86},
-        {"date": "2014-12", "value": 5.36},
-        {"date": "2015-12", "value": 4.73},
-        {"date": "2016-12", "value": 4.53},
-        {"date": "2017-12", "value": 4.08},
-        {"date": "2018-12", "value": 2.77},
-        {"date": "2019-12", "value": 2.07},
-        {"date": "2020-12", "value": 7.50},
-        {"date": "2021-09", "value": 4.86},
-        {"date": "2021-12", "value": 4.02},
-        {"date": "2022-03", "value": 3.36},
-        {"date": "2022-06", "value": 2.95},
-        {"date": "2022-09", "value": 2.77},
-        {"date": "2022-12", "value": 2.90},
-        {"date": "2023-03", "value": 3.00},
-        {"date": "2023-06", "value": 3.82},
-        {"date": "2023-12", "value": 4.30},
-        {"date": "2024-03", "value": 4.35},
-        {"date": "2024-06", "value": 4.82},
-        {"date": "2024-09", "value": 5.15},
-        {"date": "2024-12", "value": 5.78},
-        {"date": "2025-03", "value": 5.91},
-        {"date": "2025-06", "value": 6.36},
-        {"date": "2025-09", "value": 6.58},
-        {"date": "2025-12", "value": 6.58},
-        {"date": "2026-03", "value": 7.28}
-      ]
+        {
+          "date": "2006-12",
+          "value": 0.39
+        },
+        {
+          "date": "2007-12",
+          "value": 0.39
+        },
+        {
+          "date": "2008-12",
+          "value": 1.17
+        },
+        {
+          "date": "2009-12",
+          "value": 5.68
+        },
+        {
+          "date": "2010-12",
+          "value": 8.67
+        },
+        {
+          "date": "2011-12",
+          "value": 8.51
+        },
+        {
+          "date": "2012-12",
+          "value": 8.71
+        },
+        {
+          "date": "2013-12",
+          "value": 6.86
+        },
+        {
+          "date": "2014-12",
+          "value": 5.36
+        },
+        {
+          "date": "2015-12",
+          "value": 4.73
+        },
+        {
+          "date": "2016-12",
+          "value": 4.53
+        },
+        {
+          "date": "2017-12",
+          "value": 4.08
+        },
+        {
+          "date": "2018-12",
+          "value": 2.77
+        },
+        {
+          "date": "2019-12",
+          "value": 2.07
+        },
+        {
+          "date": "2020-12",
+          "value": 7.5
+        },
+        {
+          "date": "2021-09",
+          "value": 4.86
+        },
+        {
+          "date": "2021-12",
+          "value": 4.02
+        },
+        {
+          "date": "2022-03",
+          "value": 3.36
+        },
+        {
+          "date": "2022-06",
+          "value": 2.95
+        },
+        {
+          "date": "2022-09",
+          "value": 2.77
+        },
+        {
+          "date": "2022-12",
+          "value": 2.9
+        },
+        {
+          "date": "2023-03",
+          "value": 3.0
+        },
+        {
+          "date": "2023-06",
+          "value": 3.82
+        },
+        {
+          "date": "2023-12",
+          "value": 4.3
+        },
+        {
+          "date": "2024-03",
+          "value": 4.35
+        },
+        {
+          "date": "2024-06",
+          "value": 4.82
+        },
+        {
+          "date": "2024-09",
+          "value": 5.15
+        },
+        {
+          "date": "2024-12",
+          "value": 5.78
+        },
+        {
+          "date": "2025-03",
+          "value": 5.91
+        },
+        {
+          "date": "2025-06",
+          "value": 6.36
+        },
+        {
+          "date": "2025-09",
+          "value": 6.58
+        },
+        {
+          "date": "2025-12",
+          "value": 6.58
+        },
+        {
+          "date": "2026-03",
+          "value": 7.28
+        },
+        {
+          "date": "2026-06",
+          "value": 6.53
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
     },
     "trepp_overall": {
       "name": "Trepp US CMBS delinquency (30+ days)",
@@ -58,31 +164,109 @@
       "unit": "percent",
       "notes": "Headline Trepp CMBS delinquency rate. Performing matured balloons are excluded from the headline rate.",
       "points": [
-        {"date": "2020-01", "value": 2.04},
-        {"date": "2020-03", "value": 2.29},
-        {"date": "2020-04", "value": 2.29},
-        {"date": "2020-05", "value": 7.15},
-        {"date": "2020-06", "value": 10.32},
-        {"date": "2021-01", "value": 7.58},
-        {"date": "2022-12", "value": 3.04},
-        {"date": "2023-12", "value": 4.51},
-        {"date": "2024-12", "value": 6.57},
-        {"date": "2025-05", "value": 7.08},
-        {"date": "2025-07", "value": 7.23},
-        {"date": "2025-08", "value": 7.29},
-        {"date": "2025-09", "value": 7.23},
-        {"date": "2025-10", "value": 7.46},
-        {"date": "2025-11", "value": 7.26},
-        {"date": "2025-12", "value": 7.30},
-        {"date": "2026-01", "value": 7.47},
-        {"date": "2026-02", "value": 7.14},
-        {"date": "2026-03", "value": 7.55},
-        {"date": "2026-04", "value": 7.54},
-        {"date": "2026-05", "value": 7.55},
-        {"date": "2026-06", "value": 7.35},
-        {"date": "2026-07", "value": 7.86},
-        {"date": "2026-08", "value": 7.85}
-      ]
+        {
+          "date": "2020-01",
+          "value": 2.04
+        },
+        {
+          "date": "2020-03",
+          "value": 2.29
+        },
+        {
+          "date": "2020-04",
+          "value": 2.29
+        },
+        {
+          "date": "2020-05",
+          "value": 7.15
+        },
+        {
+          "date": "2020-06",
+          "value": 10.32
+        },
+        {
+          "date": "2021-01",
+          "value": 7.58
+        },
+        {
+          "date": "2022-12",
+          "value": 3.04
+        },
+        {
+          "date": "2023-12",
+          "value": 4.51
+        },
+        {
+          "date": "2024-12",
+          "value": 6.57
+        },
+        {
+          "date": "2025-05",
+          "value": 7.08
+        },
+        {
+          "date": "2025-07",
+          "value": 7.23
+        },
+        {
+          "date": "2025-08",
+          "value": 7.29
+        },
+        {
+          "date": "2025-09",
+          "value": 7.23
+        },
+        {
+          "date": "2025-10",
+          "value": 7.46
+        },
+        {
+          "date": "2025-11",
+          "value": 7.26
+        },
+        {
+          "date": "2025-12",
+          "value": 7.3
+        },
+        {
+          "date": "2026-01",
+          "value": 7.47
+        },
+        {
+          "date": "2026-02",
+          "value": 7.14
+        },
+        {
+          "date": "2026-03",
+          "value": 7.55
+        },
+        {
+          "date": "2026-04",
+          "value": 7.54
+        },
+        {
+          "date": "2026-05",
+          "value": 7.55
+        },
+        {
+          "date": "2026-06",
+          "value": 7.35
+        },
+        {
+          "date": "2026-07",
+          "value": 7.86
+        },
+        {
+          "date": "2026-08",
+          "value": 7.85
+        },
+        {
+          "date": "2026-09",
+          "value": 8.02
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
     },
     "trepp_office": {
       "name": "Trepp office CMBS delinquency",
@@ -90,27 +274,93 @@
       "frequency": "monthly",
       "unit": "percent",
       "points": [
-        {"date": "2019-12", "value": 1.85},
-        {"date": "2020-03", "value": 1.86},
-        {"date": "2020-04", "value": 1.92},
-        {"date": "2020-05", "value": 2.40},
-        {"date": "2020-06", "value": 2.66},
-        {"date": "2020-12", "value": 2.19},
-        {"date": "2021-12", "value": 2.55},
-        {"date": "2022-12", "value": 1.58},
-        {"date": "2023-12", "value": 5.82},
-        {"date": "2024-12", "value": 11.01},
-        {"date": "2025-09", "value": 11.13},
-        {"date": "2025-12", "value": 11.31},
-        {"date": "2026-01", "value": 12.34},
-        {"date": "2026-02", "value": 11.20},
-        {"date": "2026-03", "value": 11.71},
-        {"date": "2026-04", "value": 11.69},
-        {"date": "2026-05", "value": 11.53},
-        {"date": "2026-06", "value": 11.57},
-        {"date": "2026-07", "value": 11.91},
-        {"date": "2026-08", "value": 12.00}
-      ]
+        {
+          "date": "2019-12",
+          "value": 1.85
+        },
+        {
+          "date": "2020-03",
+          "value": 1.86
+        },
+        {
+          "date": "2020-04",
+          "value": 1.92
+        },
+        {
+          "date": "2020-05",
+          "value": 2.4
+        },
+        {
+          "date": "2020-06",
+          "value": 2.66
+        },
+        {
+          "date": "2020-12",
+          "value": 2.19
+        },
+        {
+          "date": "2021-12",
+          "value": 2.55
+        },
+        {
+          "date": "2022-12",
+          "value": 1.58
+        },
+        {
+          "date": "2023-12",
+          "value": 5.82
+        },
+        {
+          "date": "2024-12",
+          "value": 11.01
+        },
+        {
+          "date": "2025-09",
+          "value": 11.13
+        },
+        {
+          "date": "2025-12",
+          "value": 11.31
+        },
+        {
+          "date": "2026-01",
+          "value": 12.34
+        },
+        {
+          "date": "2026-02",
+          "value": 11.2
+        },
+        {
+          "date": "2026-03",
+          "value": 11.71
+        },
+        {
+          "date": "2026-04",
+          "value": 11.69
+        },
+        {
+          "date": "2026-05",
+          "value": 11.53
+        },
+        {
+          "date": "2026-06",
+          "value": 11.57
+        },
+        {
+          "date": "2026-07",
+          "value": 11.91
+        },
+        {
+          "date": "2026-08",
+          "value": 12.0
+        },
+        {
+          "date": "2026-09",
+          "value": 12.16
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
     },
     "trepp_multifamily": {
       "name": "Trepp multifamily CMBS delinquency",
@@ -118,27 +368,93 @@
       "frequency": "monthly",
       "unit": "percent",
       "points": [
-        {"date": "2019-12", "value": 1.78},
-        {"date": "2020-03", "value": 1.63},
-        {"date": "2020-04", "value": 1.92},
-        {"date": "2020-05", "value": 3.25},
-        {"date": "2020-06", "value": 3.29},
-        {"date": "2020-12", "value": 2.77},
-        {"date": "2021-12", "value": 1.76},
-        {"date": "2022-12", "value": 2.17},
-        {"date": "2023-12", "value": 2.62},
-        {"date": "2024-12", "value": 4.58},
-        {"date": "2025-09", "value": 6.59},
-        {"date": "2025-12", "value": 6.64},
-        {"date": "2026-01", "value": 6.94},
-        {"date": "2026-02", "value": 6.85},
-        {"date": "2026-03", "value": 7.15},
-        {"date": "2026-04", "value": 7.71},
-        {"date": "2026-05", "value": 6.95},
-        {"date": "2026-06", "value": 7.23},
-        {"date": "2026-07", "value": 7.69},
-        {"date": "2026-08", "value": 7.69}
-      ]
+        {
+          "date": "2019-12",
+          "value": 1.78
+        },
+        {
+          "date": "2020-03",
+          "value": 1.63
+        },
+        {
+          "date": "2020-04",
+          "value": 1.92
+        },
+        {
+          "date": "2020-05",
+          "value": 3.25
+        },
+        {
+          "date": "2020-06",
+          "value": 3.29
+        },
+        {
+          "date": "2020-12",
+          "value": 2.77
+        },
+        {
+          "date": "2021-12",
+          "value": 1.76
+        },
+        {
+          "date": "2022-12",
+          "value": 2.17
+        },
+        {
+          "date": "2023-12",
+          "value": 2.62
+        },
+        {
+          "date": "2024-12",
+          "value": 4.58
+        },
+        {
+          "date": "2025-09",
+          "value": 6.59
+        },
+        {
+          "date": "2025-12",
+          "value": 6.64
+        },
+        {
+          "date": "2026-01",
+          "value": 6.94
+        },
+        {
+          "date": "2026-02",
+          "value": 6.85
+        },
+        {
+          "date": "2026-03",
+          "value": 7.15
+        },
+        {
+          "date": "2026-04",
+          "value": 7.71
+        },
+        {
+          "date": "2026-05",
+          "value": 6.95
+        },
+        {
+          "date": "2026-06",
+          "value": 7.23
+        },
+        {
+          "date": "2026-07",
+          "value": 7.69
+        },
+        {
+          "date": "2026-08",
+          "value": 7.69
+        },
+        {
+          "date": "2026-09",
+          "value": 8.04
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
     },
     "trepp_retail": {
       "name": "Trepp retail CMBS delinquency",
@@ -146,27 +462,93 @@
       "frequency": "monthly",
       "unit": "percent",
       "points": [
-        {"date": "2019-12", "value": 4.24},
-        {"date": "2020-03", "value": 3.89},
-        {"date": "2020-04", "value": 3.67},
-        {"date": "2020-05", "value": 10.14},
-        {"date": "2020-06", "value": 18.07},
-        {"date": "2020-12", "value": 12.95},
-        {"date": "2021-12", "value": 8.27},
-        {"date": "2022-12", "value": 6.97},
-        {"date": "2023-12", "value": 6.47},
-        {"date": "2024-12", "value": 7.43},
-        {"date": "2025-09", "value": 6.76},
-        {"date": "2025-12", "value": 6.92},
-        {"date": "2026-01", "value": 7.04},
-        {"date": "2026-02", "value": 6.30},
-        {"date": "2026-03", "value": 6.62},
-        {"date": "2026-04", "value": 6.31},
-        {"date": "2026-05", "value": 6.61},
-        {"date": "2026-06", "value": 6.91},
-        {"date": "2026-07", "value": 6.96},
-        {"date": "2026-08", "value": 7.20}
-      ]
+        {
+          "date": "2019-12",
+          "value": 4.24
+        },
+        {
+          "date": "2020-03",
+          "value": 3.89
+        },
+        {
+          "date": "2020-04",
+          "value": 3.67
+        },
+        {
+          "date": "2020-05",
+          "value": 10.14
+        },
+        {
+          "date": "2020-06",
+          "value": 18.07
+        },
+        {
+          "date": "2020-12",
+          "value": 12.95
+        },
+        {
+          "date": "2021-12",
+          "value": 8.27
+        },
+        {
+          "date": "2022-12",
+          "value": 6.97
+        },
+        {
+          "date": "2023-12",
+          "value": 6.47
+        },
+        {
+          "date": "2024-12",
+          "value": 7.43
+        },
+        {
+          "date": "2025-09",
+          "value": 6.76
+        },
+        {
+          "date": "2025-12",
+          "value": 6.92
+        },
+        {
+          "date": "2026-01",
+          "value": 7.04
+        },
+        {
+          "date": "2026-02",
+          "value": 6.3
+        },
+        {
+          "date": "2026-03",
+          "value": 6.62
+        },
+        {
+          "date": "2026-04",
+          "value": 6.31
+        },
+        {
+          "date": "2026-05",
+          "value": 6.61
+        },
+        {
+          "date": "2026-06",
+          "value": 6.91
+        },
+        {
+          "date": "2026-07",
+          "value": 6.96
+        },
+        {
+          "date": "2026-08",
+          "value": 7.2
+        },
+        {
+          "date": "2026-09",
+          "value": 6.58
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
     },
     "trepp_lodging": {
       "name": "Trepp lodging CMBS delinquency",
@@ -174,28 +556,97 @@
       "frequency": "monthly",
       "unit": "percent",
       "points": [
-        {"date": "2019-12", "value": 1.42},
-        {"date": "2020-03", "value": 1.53},
-        {"date": "2020-04", "value": 2.71},
-        {"date": "2020-05", "value": 19.13},
-        {"date": "2020-06", "value": 24.30},
-        {"date": "2020-12", "value": 19.80},
-        {"date": "2021-12", "value": 8.79},
-        {"date": "2022-12", "value": 4.40},
-        {"date": "2023-12", "value": 5.40},
-        {"date": "2024-12", "value": 6.14},
-        {"date": "2025-04", "value": 7.85},
-        {"date": "2025-09", "value": 5.81},
-        {"date": "2025-12", "value": 6.61},
-        {"date": "2026-01", "value": 5.56},
-        {"date": "2026-02", "value": 5.94},
-        {"date": "2026-03", "value": 7.31},
-        {"date": "2026-04", "value": 6.52},
-        {"date": "2026-05", "value": 6.01},
-        {"date": "2026-06", "value": 5.22},
-        {"date": "2026-07", "value": 5.35},
-        {"date": "2026-08", "value": 5.84}
-      ]
+        {
+          "date": "2019-12",
+          "value": 1.42
+        },
+        {
+          "date": "2020-03",
+          "value": 1.53
+        },
+        {
+          "date": "2020-04",
+          "value": 2.71
+        },
+        {
+          "date": "2020-05",
+          "value": 19.13
+        },
+        {
+          "date": "2020-06",
+          "value": 24.3
+        },
+        {
+          "date": "2020-12",
+          "value": 19.8
+        },
+        {
+          "date": "2021-12",
+          "value": 8.79
+        },
+        {
+          "date": "2022-12",
+          "value": 4.4
+        },
+        {
+          "date": "2023-12",
+          "value": 5.4
+        },
+        {
+          "date": "2024-12",
+          "value": 6.14
+        },
+        {
+          "date": "2025-04",
+          "value": 7.85
+        },
+        {
+          "date": "2025-09",
+          "value": 5.81
+        },
+        {
+          "date": "2025-12",
+          "value": 6.61
+        },
+        {
+          "date": "2026-01",
+          "value": 5.56
+        },
+        {
+          "date": "2026-02",
+          "value": 5.94
+        },
+        {
+          "date": "2026-03",
+          "value": 7.31
+        },
+        {
+          "date": "2026-04",
+          "value": 6.52
+        },
+        {
+          "date": "2026-05",
+          "value": 6.01
+        },
+        {
+          "date": "2026-06",
+          "value": 5.22
+        },
+        {
+          "date": "2026-07",
+          "value": 5.35
+        },
+        {
+          "date": "2026-08",
+          "value": 5.84
+        },
+        {
+          "date": "2026-09",
+          "value": 6.18
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
     },
     "trepp_industrial": {
       "name": "Trepp industrial CMBS delinquency",
@@ -203,27 +654,93 @@
       "frequency": "monthly",
       "unit": "percent",
       "points": [
-        {"date": "2019-12", "value": 1.36},
-        {"date": "2020-03", "value": 1.35},
-        {"date": "2020-04", "value": 1.36},
-        {"date": "2020-05", "value": 1.82},
-        {"date": "2020-06", "value": 1.57},
-        {"date": "2020-12", "value": 1.14},
-        {"date": "2021-12", "value": 0.53},
-        {"date": "2022-12", "value": 0.42},
-        {"date": "2023-12", "value": 0.57},
-        {"date": "2024-12", "value": 0.29},
-        {"date": "2025-09", "value": 0.56},
-        {"date": "2025-12", "value": 0.80},
-        {"date": "2026-01", "value": 0.62},
-        {"date": "2026-02", "value": 0.67},
-        {"date": "2026-03", "value": 0.65},
-        {"date": "2026-04", "value": 0.96},
-        {"date": "2026-05", "value": 1.31},
-        {"date": "2026-06", "value": 1.20},
-        {"date": "2026-07", "value": 1.13},
-        {"date": "2026-08", "value": 1.14}
-      ]
+        {
+          "date": "2019-12",
+          "value": 1.36
+        },
+        {
+          "date": "2020-03",
+          "value": 1.35
+        },
+        {
+          "date": "2020-04",
+          "value": 1.36
+        },
+        {
+          "date": "2020-05",
+          "value": 1.82
+        },
+        {
+          "date": "2020-06",
+          "value": 1.57
+        },
+        {
+          "date": "2020-12",
+          "value": 1.14
+        },
+        {
+          "date": "2021-12",
+          "value": 0.53
+        },
+        {
+          "date": "2022-12",
+          "value": 0.42
+        },
+        {
+          "date": "2023-12",
+          "value": 0.57
+        },
+        {
+          "date": "2024-12",
+          "value": 0.29
+        },
+        {
+          "date": "2025-09",
+          "value": 0.56
+        },
+        {
+          "date": "2025-12",
+          "value": 0.8
+        },
+        {
+          "date": "2026-01",
+          "value": 0.62
+        },
+        {
+          "date": "2026-02",
+          "value": 0.67
+        },
+        {
+          "date": "2026-03",
+          "value": 0.65
+        },
+        {
+          "date": "2026-04",
+          "value": 0.96
+        },
+        {
+          "date": "2026-05",
+          "value": 1.31
+        },
+        {
+          "date": "2026-06",
+          "value": 1.2
+        },
+        {
+          "date": "2026-07",
+          "value": 1.13
+        },
+        {
+          "date": "2026-08",
+          "value": 1.14
+        },
+        {
+          "date": "2026-09",
+          "value": 1.14
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
     },
     "trepp_special_servicing": {
       "name": "Trepp CMBS special servicing rate",
@@ -231,16 +748,50 @@
       "frequency": "monthly",
       "unit": "percent",
       "points": [
-        {"date": "2024-06", "value": 8.23},
-        {"date": "2025-04", "value": 10.17},
-        {"date": "2025-05", "value": 10.30},
-        {"date": "2025-06", "value": 10.57},
-        {"date": "2025-07", "value": 10.48},
-        {"date": "2025-08", "value": 10.29},
-        {"date": "2026-05", "value": 10.86},
-        {"date": "2026-06", "value": 11.20},
-        {"date": "2026-07", "value": 11.09}
-      ]
+        {
+          "date": "2024-06",
+          "value": 8.23
+        },
+        {
+          "date": "2025-04",
+          "value": 10.17
+        },
+        {
+          "date": "2025-05",
+          "value": 10.3
+        },
+        {
+          "date": "2025-06",
+          "value": 10.57
+        },
+        {
+          "date": "2025-07",
+          "value": 10.48
+        },
+        {
+          "date": "2025-08",
+          "value": 10.29
+        },
+        {
+          "date": "2026-05",
+          "value": 10.86
+        },
+        {
+          "date": "2026-06",
+          "value": 11.2
+        },
+        {
+          "date": "2026-07",
+          "value": 11.09
+        },
+        {
+          "date": "2026-08",
+          "value": 11.42
+        }
+      ],
+      "stale": false,
+      "stale_note": "",
+      "notes": "August 2026 is the latest TreppTalk special-servicing print located (published September 14, 2026). September special-servicing print not located as of October 5, 2026; not marked stale because a September vendor print was not found."
     },
     "crediq_distress": {
       "name": "CRED iQ overall CMBS distress (delinquent and/or special servicing)",
@@ -249,17 +800,49 @@
       "unit": "percent",
       "notes": "Conduit and SASB universe as published in CRED iQ monthly notes. Universe and methodology differ from Trepp. Prints are as published; the firm has used more than one sample frame.",
       "points": [
-        {"date": "2022-07", "value": 4.83},
-        {"date": "2024-12", "value": 10.60},
-        {"date": "2025-04", "value": 10.30},
-        {"date": "2025-08", "value": 11.78},
-        {"date": "2025-11", "value": 11.63},
-        {"date": "2026-01", "value": 11.98},
-        {"date": "2026-02", "value": 11.63},
-        {"date": "2026-04", "value": 11.08},
-        {"date": "2026-05", "value": 11.86},
-        {"date": "2026-07", "value": 10.91}
-      ]
+        {
+          "date": "2022-07",
+          "value": 4.83
+        },
+        {
+          "date": "2024-12",
+          "value": 10.6
+        },
+        {
+          "date": "2025-04",
+          "value": 10.3
+        },
+        {
+          "date": "2025-08",
+          "value": 11.78
+        },
+        {
+          "date": "2025-11",
+          "value": 11.63
+        },
+        {
+          "date": "2026-01",
+          "value": 11.98
+        },
+        {
+          "date": "2026-02",
+          "value": 11.63
+        },
+        {
+          "date": "2026-04",
+          "value": 11.08
+        },
+        {
+          "date": "2026-05",
+          "value": 11.86
+        },
+        {
+          "date": "2026-07",
+          "value": 10.91
+        }
+      ],
+      "stale": true,
+      "stale_note": "STALE. Last verified 2026-07. August and September overall conduit/SASB distress prints were not located in a CRED iQ primary note this run. An August 27, 2026 CRED iQ note said early August figures were not finalized."
     },
     "crediq_special_servicing": {
       "name": "CRED iQ special servicing rate",
@@ -267,16 +850,45 @@
       "frequency": "monthly",
       "unit": "percent",
       "points": [
-        {"date": "2022-07", "value": 4.47},
-        {"date": "2024-12", "value": 9.80},
-        {"date": "2025-08", "value": 10.95},
-        {"date": "2025-11", "value": 11.21},
-        {"date": "2026-01", "value": 11.10},
-        {"date": "2026-02", "value": 11.13},
-        {"date": "2026-04", "value": 10.61},
-        {"date": "2026-05", "value": 11.25},
-        {"date": "2026-07", "value": 10.38}
-      ]
+        {
+          "date": "2022-07",
+          "value": 4.47
+        },
+        {
+          "date": "2024-12",
+          "value": 9.8
+        },
+        {
+          "date": "2025-08",
+          "value": 10.95
+        },
+        {
+          "date": "2025-11",
+          "value": 11.21
+        },
+        {
+          "date": "2026-01",
+          "value": 11.1
+        },
+        {
+          "date": "2026-02",
+          "value": 11.13
+        },
+        {
+          "date": "2026-04",
+          "value": 10.61
+        },
+        {
+          "date": "2026-05",
+          "value": 11.25
+        },
+        {
+          "date": "2026-07",
+          "value": 10.38
+        }
+      ],
+      "stale": true,
+      "stale_note": "STALE. Last verified 2026-07. August and September overall special-servicing prints were not located in a CRED iQ primary note this run."
     },
     "crediq_mf_distress_top50": {
       "name": "CRED iQ multifamily distress, top 50 CMBS markets",
@@ -285,10 +897,21 @@
       "unit": "percent",
       "notes": "Balance-weighted distress in the 50 largest US CMBS markets. Not the same frame as the all-universe CRED iQ distress rate.",
       "points": [
-        {"date": "2026-02", "value": 6.0},
-        {"date": "2026-05", "value": 10.95},
-        {"date": "2026-07", "value": 13.0}
-      ]
+        {
+          "date": "2026-02",
+          "value": 6.0
+        },
+        {
+          "date": "2026-05",
+          "value": 10.95
+        },
+        {
+          "date": "2026-07",
+          "value": 13.0
+        }
+      ],
+      "stale": true,
+      "stale_note": "STALE. Last verified 2026-07. No August or September top-50 multifamily print located this run."
     },
     "dbrs_overall": {
       "name": "Morningstar DBRS overall CMBS delinquency",
@@ -297,75 +920,219 @@
       "unit": "percent",
       "notes": "Multi-borrower and SASB combined. Methodology differs from Trepp.",
       "points": [
-        {"date": "2026-06", "value": 8.58},
-        {"date": "2026-07", "value": 8.76}
-      ]
+        {
+          "date": "2026-06",
+          "value": 8.58
+        },
+        {
+          "date": "2026-07",
+          "value": 8.76
+        },
+        {
+          "date": "2026-08",
+          "value": 8.87
+        }
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_serious": {
+      "name": "Trepp serious delinquency (60+, foreclosure, REO, non-performing balloon)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Separate from the 30+ headline rate. September 2026 report states 7.87%, up 18 bp from 7.69%.",
+      "stale": false,
+      "points": [
+        {
+          "date": "2026-08",
+          "value": 7.69
+        },
+        {
+          "date": "2026-09",
+          "value": 7.87
+        }
+      ],
+      "stale_note": ""
+    },
+    "trepp_performing_balloon": {
+      "name": "Trepp performing matured balloon (status share)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Status-bucket share, not the headline rate and not added to it. September 2026 report status table: 1.64%. August status share not stated in the verified extract.",
+      "stale": false,
+      "points": [
+        {
+          "date": "2026-09",
+          "value": 1.64
+        }
+      ],
+      "stale_note": ""
+    },
+    "trepp_cmbs20": {
+      "name": "Trepp CMBS 2.0+ delinquency",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "September 2026 report: 7.93%, up 17 bp. Serious delinquency on CMBS 2.0+ was 7.78%, up 18 bp. Not mixed into the headline series.",
+      "stale": false,
+      "points": [
+        {
+          "date": "2026-09",
+          "value": 7.93
+        }
+      ],
+      "stale_note": ""
+    },
+    "kbra_private_label_dq": {
+      "name": "KBRA-rated US private-label CMBS 30+ delinquency",
+      "vendor": "KBRA",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "KBRA-rated universe only (conduits, SASB, large loan). Not comparable to Trepp. September 2026: 7.7% ($25.8 billion), up 9 bp from 7.6%. Distress rate 10.3%, down 4 bp. Rates on non-fully defeased balances.",
+      "stale": false,
+      "points": [
+        {
+          "date": "2026-08",
+          "value": 7.6
+        },
+        {
+          "date": "2026-09",
+          "value": 7.7
+        }
+      ],
+      "stale_note": ""
     }
   },
   "sources": [
     {
       "id": "S1",
       "name": "Trepp LLC",
-      "document": "Monthly CMBS Delinquency Report and TreppTalk summaries",
-      "dates": "May 2020 through August 2026 delinquency prints",
-      "location": "trepp.com / TreppTalk",
-      "url": "https://www.trepp.com/trepptalk/overall-cmbs-delinquency-rate-decreased-in-august-2026"
+      "document": "Trepp CMBS Delinquency Report, September 2026 (PDF)",
+      "dates": "Observation month September 2026; PDF accessed October 5, 2026",
+      "location": "trepp.com",
+      "url": "https://www.trepp.com/hubfs/Trepp%20CMBS%20Delinquency%20Report%20September%202026.pdf"
     },
     {
       "id": "S2",
-      "name": "Mortgage Bankers Association",
-      "document": "Commercial/Multifamily Mortgage Delinquency Rates, Q1 2026",
-      "dates": "Published June 2, 2026; historical year-end series from 2006. Q2 2026 edition of this report not located as of September 7, 2026.",
-      "location": "mba.org",
-      "url": "https://www.mba.org/docs/default-source/research-and-forecasts/cmf-delinquency-rates/1q26cmfdelinquency.pdf"
+      "name": "Trepp LLC",
+      "document": "TreppTalk: CMBS Delinquency Rate Rose 17 Basis Points in September 2026",
+      "dates": "Published October 2, 2026; September 2026 print",
+      "location": "trepp.com",
+      "url": "https://www.trepp.com/trepptalk/cmbs-delinquency-report-sept-2026"
     },
     {
       "id": "S3",
-      "name": "CRED iQ",
-      "document": "Monthly CMBS distress notes and top-50 market reports",
-      "dates": "July 2022 through July 2026 prints as published in the conduit/SASB notes. August 2026 overall CMBS rates were described as not yet finalized.",
-      "location": "cred-iq.com/blog",
-      "url": "https://cred-iq.com/blog/2026/07/31/cmbs-distress-hits-a-2026-high/"
+      "name": "Trepp LLC",
+      "document": "TreppTalk: CMBS Special Servicing Rate Climbs in August 2026",
+      "dates": "Published September 14, 2026; August 2026 print",
+      "location": "trepp.com",
+      "url": "https://www.trepp.com/trepptalk/cmbs-special-servicing-rate-climbs-in-august-2026"
     },
     {
       "id": "S4",
-      "name": "Morningstar DBRS",
-      "document": "U.S. CMBS Delinquency Report, July 2026",
-      "dates": "Report dated August 28, 2026; July 2026 print. August 2026 report not located as of September 7, 2026.",
-      "location": "dbrs.morningstar.com",
-      "url": "https://dbrs.morningstar.com/research/488230"
+      "name": "Mortgage Bankers Association",
+      "document": "Press release: Commercial and Multifamily Mortgage Delinquencies Mixed in Second-Quarter 2026",
+      "dates": "Published September 28, 2026; quarter ended June 30, 2026",
+      "location": "mba.org",
+      "url": "https://www.mba.org/news-and-research/newsroom/news/2026/09/28/commercial-and-multifamily-mortgage-delinquencies-mixed-in-second-quarter-2026"
     },
     {
       "id": "S5",
-      "name": "CRE Finance Council / Deutsche Bank compilation of Trepp",
-      "document": "CREFC Update on CMBS Loan Performance (May 2026)",
-      "dates": "Year-end property-type delinquencies 2019-2025 and May 2026",
-      "location": "CREFC member update",
-      "url": "https://assets.informz.net/cmbs/data/images/CREFC%20Update%20on%20CMBS%20Loan%20Performance%20(May%202026).pdf"
+      "name": "Morningstar DBRS",
+      "document": "U.S. CMBS Delinquency Analysis Report, August 2026",
+      "dates": "Commentary dated September 30, 2026; August 2026 print 8.87%",
+      "location": "dbrs.morningstar.com",
+      "url": "https://dbrs.morningstar.com/insights/commentary/490305/us-cmbs-delinquency-analysis-report-august-2026-delinquency-and-special-servicing-rates-rise-liquidation-volume-drops"
     },
     {
       "id": "S6",
-      "name": "CRE Daily",
-      "document": "CMBS Delinquency Holds at 7.85% as Office Risk Rises",
-      "dates": "September 3, 2026 (August 2026 Trepp print)",
-      "location": "credaily.com",
-      "url": "https://www.credaily.com/briefs/cmbs-delinquency-holds-at-7-85-as-office-risk-rises/"
+      "name": "KBRA",
+      "document": "CMBS Loan Performance Trends: September 2026",
+      "dates": "Published September 30, 2026; September 2026 servicer period",
+      "location": "kbra.com",
+      "url": "https://www.kbra.com/publications/jXhmdtGY"
     },
     {
       "id": "S7",
-      "name": "Trepp LLC",
-      "document": "TreppTalk: CMBS Special Servicing Rate Climbs in June 2026",
-      "dates": "Published July 13, 2026; June 2026 print 11.20%",
-      "location": "trepp.com / TreppTalk",
-      "url": "https://www.trepp.com/trepptalk/special-servicing-rate-climbs-in-june-2026"
+      "name": "KBRA",
+      "document": "KBRA Downgrades Three Ratings and Affirms All Other Ratings for COMM 2016-DC2",
+      "dates": "September 23, 2026",
+      "location": "kbra.com",
+      "url": "https://www.kbra.com/publications/RXJtLfqd"
     },
     {
       "id": "S8",
       "name": "Trepp LLC",
-      "document": "TreppTalk: CMBS Special Servicing Rate Declined in July 2026",
-      "dates": "Published August 10, 2026; July 2026 print 11.09%",
-      "location": "trepp.com / TreppTalk",
-      "url": "https://www.trepp.com/trepptalk/cmbs-special-servicing-july-2026"
+      "document": "Prior TreppTalk delinquency and special-servicing notes retained for history through August 2026 delinquency and July 2026 special servicing",
+      "dates": "History carried only where already in the file; not re-marked",
+      "location": "trepp.com",
+      "url": "https://www.trepp.com/trepptalk/overall-cmbs-delinquency-rate-decreased-in-august-2026"
+    },
+    {
+      "id": "S9",
+      "name": "Mortgage Bankers Association",
+      "document": "Commercial/Multifamily Mortgage Delinquency Rates, Q1 2026 (retained historical series)",
+      "dates": "Q1 2026 point not rewritten this run",
+      "location": "mba.org",
+      "url": "https://www.mba.org/docs/default-source/research-and-forecasts/cmf-delinquency-rates/1q26cmfdelinquency.pdf"
+    },
+    {
+      "id": "S10",
+      "name": "CRED iQ",
+      "document": "Monthly notes through July 2026 retained; August 27, 2026 note said early August figures were not finalized",
+      "dates": "Last verified overall print 2026-07",
+      "location": "cred-iq.com",
+      "url": "https://cred-iq.com/blog/2026/08/27/property-types-feeling-the-heat-in-august/"
     }
+  ],
+  "events": [
+    {
+      "date": "2026-09",
+      "type": "newly delinquent",
+      "source": "TreppTalk September 2026 delinquency note",
+      "detail": "Five largest newly delinquent loans: $1.10 billion Los Angeles eight-property studio-and-office portfolio; $470.0 million Houston two-tower office; $280.0 million Santa Monica hotel; $230.1 million Denver office; $208.9 million Silicon Valley office. Trepp said five large SASB loans drove much of the increase. Share of that month's newly delinquent dollars was not published."
+    },
+    {
+      "date": "2026-09",
+      "type": "cure",
+      "source": "Trepp September 2026 Delinquency Report",
+      "detail": "Largest cure cited: $384.3 million Los Angeles office tower moved from non-performing to performing matured balloon after interest-only payments resumed. Three large regional malls cured or paid off; individual mall balances were not fully readable in the public extract."
+    },
+    {
+      "date": "2026-08",
+      "type": "special servicing transfer",
+      "source": "TreppTalk August 2026 special servicing note",
+      "detail": "Transfers totaled roughly $3.16 billion across 32 loans. Largest named transfer: $1.10 billion Hollywood studio-and-office loan, which lifted mixed-use special servicing 154 bp to 13.47%."
+    },
+    {
+      "date": "2026-09",
+      "type": "special servicing transfer",
+      "source": "KBRA CMBS Loan Performance Trends September 2026",
+      "detail": "One SoHo Square, $469 million across six conduit transactions, transferred to special servicing for imminent default."
+    }
+  ],
+  "ratings": [
+    {
+      "date": "2026-09-23",
+      "agency": "KBRA",
+      "action": "Downgrade",
+      "document": "KBRA Downgrades Three Ratings and Affirms All Other Ratings for COMM 2016-DC2",
+      "detail": "Class E to B- (sf) from BB- (sf); Class F to CCC (sf) from B (sf); Class G to CC (sf) from CCC (sf). Affirmed Class B AA (sf). Pool reduced to four assets, $171.9 million. Estimated losses $38.6 million.",
+      "url": "https://www.kbra.com/publications/RXJtLfqd"
+    }
+  ],
+  "conclusions": [
+    "Stock: Trepp 30+ delinquency was 8.02% in September 2026 (802 bp), up 17 bp from August; serious delinquency was 7.87% (787 bp), up 18 bp from 7.69%. Special servicing was 11.42% in August 2026 (1,142 bp), up 33 bp from July. The September special-servicing print was not located.",
+    "Flow: Trepp attributed much of the September delinquency increase to five large SASB loans with published balances; the share of that month's newly delinquent dollars was not published. August special-servicing transfers were about $3.16 billion across 32 loans, led by a $1.10 billion mixed-use transfer.",
+    "Wall: the September status share for performing matured balloons was 1.64%. No conclusion on whether that wall rose or fell: the August performing-balloon status share was not in the verified September extract."
+  ],
+  "withheld": [
+    "No conclusion: CRED iQ overall distress last verified 2026-07.",
+    "No conclusion: CRED iQ special servicing last verified 2026-07.",
+    "No conclusion: CRED iQ multifamily top-50 distress last verified 2026-07.",
+    "No conclusion that a lower headline rate offset a higher performing-balloon rate: both were not verified as a paired comparison for the same period.",
+    "No sector call from the headline rate alone. Office rose 16 bp, below the 25 bp adjacent flag. Multifamily rose 35 bp and lodging rose 34 bp; retail fell 62 bp."
   ]
 }
