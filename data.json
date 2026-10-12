@@ -8,5 +8,21 @@
     "alert_mom_bps": 25,
     "alert_3m_bps": 50,
     "as_of_note": "Newest verified observation period in the file is September 2026 (Trepp delinquency, serious delinquency, performing matured balloon, and KBRA performance). Not the compile date."
-  }
+  },
+  "series": {
+    "trepp_overall": {
+      "name": "Trepp US CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Headline Trepp CMBS delinquency rate. Performing matured balloons are excluded from the headline rate.",
+      "points": [
+        {"date": "2026-09", "value": 8.02}
+      ],
+      "stale": false,
+      "stale_note": ""
+    }
+  },
+  "conclusions": ["Stock: Trepp 30+ delinquency was 8.02% in September 2026."],
+  "withheld": ["No conclusion: Trepp special servicing last verified 2026-08 (STALE)."]
 }
