@@ -1,1 +1,12 @@
-PLACEHOLDER
+{
+  "meta": {
+    "firm": "Hamilton Capital",
+    "title": "CMBS Distress Monitor",
+    "as_of": "2026-09-30",
+    "compiled": "2026-10-12",
+    "history_policy": "Only verified public prints. Missing months are omitted, not interpolated.",
+    "alert_mom_bps": 25,
+    "alert_3m_bps": 50,
+    "as_of_note": "Newest verified observation period in the file is September 2026 (Trepp delinquency, serious delinquency, performing matured balloon, and KBRA performance). Not the compile date."
+  }
+}
