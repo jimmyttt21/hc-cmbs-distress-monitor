@@ -61,6 +61,7 @@
     .kpi .sub { font-family: Arial, sans-serif; font-size: 11px; color: var(--muted); }
     .kpi .chg.up { color: var(--up); }
     .kpi .chg.down { color: var(--down); }
+    .stale { color: var(--warn); font-weight: 700; }
     .panel {
       background: var(--card);
       border: 1px solid var(--line);
@@ -184,6 +185,7 @@
     }
 
     function drawLine(id, datasets) {
+      if (!datasets || datasets.length === 0) return;
       const labels = Array.from(new Set(datasets.flatMap(d => d.points.map(p => p.date)))).sort();
       new Chart(document.getElementById(id), {
         type: "line",
@@ -217,10 +219,10 @@
     }
 
     function render(DATA) {
+      const overallDate = (DATA.series.trepp_overall && DATA.series.trepp_overall.points.length) ? DATA.series.trepp_overall.points.slice(-1)[0].date : "n/a";
       document.getElementById("asof").textContent =
         "Compiled " + DATA.meta.compiled + ". Newest verified observation period: " +
-        DATA.meta.as_of + ". Trepp 30+ last verified " +
-        DATA.series.trepp_overall.points.slice(-1)[0].date +
+        DATA.meta.as_of + ". Trepp 30+ last verified " + overallDate +
         ". Each series keeps its own date. STALE means a newer vendor period was not verified. Missing months omitted, not interpolated.";
 
       const cards = [
@@ -230,12 +232,14 @@
         ["Trepp retail", "trepp_retail"],
         ["Trepp lodging", "trepp_lodging"],
         ["Trepp industrial", "trepp_industrial"],
+        ["Trepp special servicing", "trepp_special_servicing"],
         ["CRED iQ distress", "crediq_distress"],
         ["MBA CMBS (qtr)", "mba_cmbs_dq"]
       ];
       const kpi = document.getElementById("kpis");
       cards.forEach(([label, key]) => {
         const s = DATA.series[key];
+        if (!s || !s.points || !s.points.length) return;
         const lt = lastTwo(s.points);
         const latest = s.points[s.points.length - 1];
         const chg = lt ? `<span class="chg ${lt.dBps > 0 ? "up" : lt.dBps < 0 ? "down" : ""}">${chgLabel(lt.dBps)} vs ${lt.prior.date}</span>` : "";
@@ -246,6 +250,7 @@
       const alerts = [];
       Object.keys(DATA.series).forEach(key => {
         const s = DATA.series[key];
+        if (!s.points || s.points.length < 2) return;
         const mom = lastTwo(s.points);
         const q = threeMonth(s.points);
         if (mom && Math.abs(mom.dBps) >= DATA.meta.alert_mom_bps) {
@@ -272,28 +277,43 @@
         overall: "#1c2b4a", office: "#8b2e2e", mf: "#2b5f45",
         retail: "#b08a3e", lodging: "#3d5a80", ind: "#6b7280"
       };
-      document.getElementById("chartTrepp").parentNode.style.height = "360px";
-      drawLine("chartTrepp", [
-        { label: "Overall", points: DATA.series.trepp_overall.points, color: colors.overall },
-        { label: "Office", points: DATA.series.trepp_office.points, color: colors.office },
-        { label: "Multifamily", points: DATA.series.trepp_multifamily.points, color: colors.mf },
-        { label: "Retail", points: DATA.series.trepp_retail.points, color: colors.retail },
-        { label: "Lodging", points: DATA.series.trepp_lodging.points, color: colors.lodging },
-        { label: "Industrial", points: DATA.series.trepp_industrial.points, color: colors.ind }
-      ]);
-      document.getElementById("chartMba").parentNode.style.height = "320px";
-      drawLine("chartMba", [
-        { label: "MBA CMBS DQ", points: DATA.series.mba_cmbs_dq.points, color: colors.overall }
-      ]);
-      document.getElementById("chartCred").parentNode.style.height = "320px";
-      drawLine("chartCred", [
-        { label: "CRED iQ distress", points: DATA.series.crediq_distress.points, color: colors.office },
-        { label: "CRED iQ special servicing", points: DATA.series.crediq_special_servicing.points, color: colors.overall },
-        { label: "CRED iQ MF top-50 distress", points: DATA.series.crediq_mf_distress_top50.points, color: colors.mf }
-      ]);
+      const treppDs = [];
+      if (DATA.series.trepp_overall && DATA.series.trepp_overall.points.length) treppDs.push({ label: "Overall", points: DATA.series.trepp_overall.points, color: colors.overall });
+      if (DATA.series.trepp_office && DATA.series.trepp_office.points.length) treppDs.push({ label: "Office", points: DATA.series.trepp_office.points, color: colors.office });
+      if (DATA.series.trepp_multifamily && DATA.series.trepp_multifamily.points.length) treppDs.push({ label: "Multifamily", points: DATA.series.trepp_multifamily.points, color: colors.mf });
+      if (DATA.series.trepp_retail && DATA.series.trepp_retail.points.length) treppDs.push({ label: "Retail", points: DATA.series.trepp_retail.points, color: colors.retail });
+      if (DATA.series.trepp_lodging && DATA.series.trepp_lodging.points.length) treppDs.push({ label: "Lodging", points: DATA.series.trepp_lodging.points, color: colors.lodging });
+      if (DATA.series.trepp_industrial && DATA.series.trepp_industrial.points.length) treppDs.push({ label: "Industrial", points: DATA.series.trepp_industrial.points, color: colors.ind });
+      if (treppDs.length) {
+        document.getElementById("chartTrepp").parentNode.style.height = "360px";
+        drawLine("chartTrepp", treppDs);
+      } else {
+        document.getElementById("chartTrepp").parentNode.innerHTML += '<p class="note">No Trepp delinquency points available for chart.</p>';
+      }
+
+      if (DATA.series.mba_cmbs_dq && DATA.series.mba_cmbs_dq.points.length) {
+        document.getElementById("chartMba").parentNode.style.height = "320px";
+        drawLine("chartMba", [
+          { label: "MBA CMBS DQ", points: DATA.series.mba_cmbs_dq.points, color: colors.overall }
+        ]);
+      } else {
+        document.getElementById("chartMba").parentNode.innerHTML += '<p class="note">No MBA points available for chart.</p>';
+      }
+
+      const credDs = [];
+      if (DATA.series.crediq_distress && DATA.series.crediq_distress.points.length) credDs.push({ label: "CRED iQ distress", points: DATA.series.crediq_distress.points, color: colors.office });
+      if (DATA.series.crediq_special_servicing && DATA.series.crediq_special_servicing.points.length) credDs.push({ label: "CRED iQ special servicing", points: DATA.series.crediq_special_servicing.points, color: colors.overall });
+      if (DATA.series.crediq_mf_distress_top50 && DATA.series.crediq_mf_distress_top50.points.length) credDs.push({ label: "CRED iQ MF top-50 distress", points: DATA.series.crediq_mf_distress_top50.points, color: colors.mf });
+      if (credDs.length) {
+        document.getElementById("chartCred").parentNode.style.height = "320px";
+        drawLine("chartCred", credDs);
+      } else {
+        document.getElementById("chartCred").parentNode.innerHTML += '<p class="note">No CRED iQ points available for chart.</p>';
+      }
 
       const latestRows = Object.keys(DATA.series).map(key => {
         const s = DATA.series[key];
+        if (!s.points || !s.points.length) return "";
         const p = s.points[s.points.length - 1];
         const lt = lastTwo(s.points);
         const mark = s.stale ? " STALE" : "";
@@ -305,11 +325,12 @@
       const hist = document.getElementById("history");
       Object.keys(DATA.series).forEach(key => {
         const s = DATA.series[key];
+        if (!s.points || !s.points.length) return;
         const rows = s.points.map(p => `<tr><td>${p.date}</td><td class="num">${fmt(p.value)}</td></tr>`).join("");
         hist.innerHTML += `<h3 style="font-size:14px;margin:14px 0 6px">${s.name}</h3><p class="note">${s.notes || s.vendor}</p><table><thead><tr><th>Date</th><th class="num">Rate</th></tr></thead><tbody>${rows}</tbody></table>`;
       });
 
-      document.getElementById("sources").innerHTML = DATA.sources.map(s =>
+      document.getElementById("sources").innerHTML = (DATA.sources || []).map(s =>
         `<p class="src"><strong>${s.id}. ${s.name}</strong> (${s.document}). Date: ${s.dates}. Location: ${s.location}. URL: <a href="${s.url}" target="_blank" rel="noopener">${s.url}</a></p>`
       ).join("");
     }
