@@ -2,12 +2,12 @@
   "meta": {
     "firm": "Hamilton Capital",
     "title": "CMBS Distress Monitor",
-    "as_of": "2026-09-30",
-    "compiled": "2026-10-26",
+    "as_of": "2026-10",
+    "compiled": "2026-11-02",
     "history_policy": "Only verified public prints. Missing months are omitted, not interpolated.",
     "alert_mom_bps": 25,
     "alert_3m_bps": 50,
-    "as_of_note": "Newest verified observation period in the file is September 2026 (Trepp delinquency, serious delinquency, performing matured balloon, special servicing). Not the compile date."
+    "as_of_note": "Newest verified observation period in the file is October 2026 (CRED iQ distress). Trepp series last verified September 2026. Not the compile date."
   },
   "series": {
     "trepp_overall": {
@@ -198,25 +198,50 @@
       "stale_note": ""
     },
     "mba_cmbs_dq": {
-      "name": "MBA CMBS delinquency (30+ days or REO)",
+      "name": "MBA Commercial Delinquency Report CMBS (30+ or REO)",
       "vendor": "Mortgage Bankers Association",
       "frequency": "quarterly",
       "unit": "percent",
-      "notes": "MBA quarterly Commercial Delinquency Report. Definition differs from Trepp.",
+      "notes": "From MBA Commercial Delinquency Report. Different from CREF Loan Performance Survey.",
       "points": [
         {"date": "2026-Q2", "value": 6.53}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "mba_cref_cmbs_dq": {
+      "name": "MBA CREF Loan Performance Survey CMBS (30+ days)",
+      "vendor": "Mortgage Bankers Association",
+      "frequency": "quarterly",
+      "unit": "percent",
+      "notes": "MBA CREF Loan Performance Survey. Definition and sample differ from Commercial Delinquency Report.",
+      "points": [
+        {"date": "2026-Q3", "value": 4.97}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "crediq_distress": {
+      "name": "CRED iQ conduit and SASB distress (delinquent, past maturity, or special servicing)",
+      "vendor": "CRED iQ",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Distress defined as balance 30+ days delinquent, past maturity (performing or not), or in special servicing. Conduit and SASB only.",
+      "points": [
+        {"date": "2026-10", "value": 11.2}
       ],
       "stale": false,
       "stale_note": ""
     }
   },
   "conclusions": [
-    "Stock: Trepp 30+ delinquency was 8.02 percent (up 17 bp), serious delinquency 7.87 percent (up 18 bp), and special servicing 11.49 percent (up 7 bp) in September 2026; performing matured balloon was 1.64 percent.",
-    "Flow: Five large single-asset single-borrower loans drove much of the delinquency increase; non-performing matured balloons accounted for 68 percent of newly delinquent balances.",
-    "Wall: Including performing matured balloons, the rate was 9.66 percent, down 15 bp from August."
+    "Stock: Trepp 30+ delinquency was 8.02 percent (up 17 bp), serious delinquency 7.87 percent (up 18 bp), and special servicing 11.49 percent (up 7 bp) in September 2026; performing matured balloon was 1.64 percent. CRED iQ distress rate was 11.2 percent in October 2026 for conduit and SASB.",
+    "Flow: Five large single-asset single-borrower loans drove much of the September delinquency increase; non-performing matured balloons accounted for 68 percent of newly delinquent balances.",
+    "Wall: Including performing matured balloons, the Trepp rate was 9.66 percent in September, down 15 bp from August."
   ],
   "withheld": [
-    "No conclusion: CRED iQ last verified none (no current public print verified this run)."
+    "No conclusion: Trepp October delinquency and special servicing last verified none (no public print released as of this run).",
+    "No conclusion: MBA Commercial Delinquency Report Q3 last verified none (different survey series verified instead)."
   ],
   "events": [
     {
@@ -224,6 +249,12 @@
       "type": "Newly delinquent",
       "detail": "Five largest newly delinquent loans: $1.10 billion eight-property studio-and-office portfolio in Los Angeles, $470.0 million two-tower office complex in Houston, $280.0 million beachfront hotel in Santa Monica, $230.1 million office in Denver, $208.9 million single-tenant office in Silicon Valley. Non-performing matured balloon loans accounted for 68 percent of newly delinquent balances.",
       "source": "Trepp CMBS Delinquency Report September 2026"
+    },
+    {
+      "date": "2026-10",
+      "type": "Newly delinquent or special servicing",
+      "detail": "CRED iQ property alerts flagged $4.5 billion of conduit and SASB CMBS debt as newly delinquent or newly in special servicing in October, 93 percent of it past maturity or within six months of it. Office $1.5 billion, hotels $1.1 billion, retail $0.7 billion, industrial $0.5 billion.",
+      "source": "CRED iQ Blog, CMBS Distress Shifts Away From New York, October 29, 2026"
     }
   ],
   "ratings": [
@@ -234,6 +265,14 @@
       "detail": "Reviewed 44 North American CMBS deals. Actions on 470 classes: 355 confirmations, 93 downgrades, 13 upgrades, 9 Under Review Negative. Downgrades driven by higher projected losses on specially serviced loans and underperforming assets, with office properties driving significant pressure.",
       "document": "Monthly North American CMBS Rating Action Summary: September 2026",
       "url": "https://dbrs.morningstar.com/insights/commentary/491947/monthly-north-american-cmbs-rating-action-summary-september-2026"
+    },
+    {
+      "date": "2026-10-26",
+      "agency": "Morningstar DBRS",
+      "action": "September 2026 delinquency analysis",
+      "detail": "Delinquency rate for loans packaged in U.S. CMBS transactions dropped to 8.74 percent in September 2026, a decrease of 13 basis points from August 2026.",
+      "document": "U.S. CMBS Delinquency Analysis Report -- September 2026",
+      "url": "https://dbrs.morningstar.com/insights/commentary/492045/us-cmbs-delinquency-analysis-report-september-2026-delinquency-rate-eases-special-servicing-rates-remain-elevated-liquidation-volume-increases"
     }
   ],
   "sources": [
@@ -262,12 +301,36 @@
       "url": "https://www.mba.org/news-and-research/newsroom/news/2026/09/28/commercial-and-multifamily-mortgage-delinquencies-mixed-in-second-quarter-2026"
     },
     {
+      "id": "MBA-CREF-Q3-2026",
+      "name": "Delinquency Rates for Commercial Properties Increased in the Third Quarter of 2026",
+      "document": "MBA CREF Loan Performance Survey Press Release",
+      "dates": "Q3 2026 observation (as of September 30, 2026); published 27 October 2026",
+      "location": "MBA.org",
+      "url": "https://www.mba.org/news-and-research/newsroom/news/2026/10/27/delinquency-rates-for-commercial-properties-increased-in-the-third-quarter-of-2026"
+    },
+    {
+      "id": "CREDIQ-2026-10",
+      "name": "CMBS Distress Shifts Away From New York",
+      "document": "CRED iQ Blog research note",
+      "dates": "October 2026 remittance; published 29 October 2026",
+      "location": "cred-iq.com",
+      "url": "https://cred-iq.com/blog/2026/10/29/cmbs-distress-by-metro-property-type/"
+    },
+    {
       "id": "DBRS-SEP-2026",
       "name": "Monthly North American CMBS Rating Action Summary: September 2026",
       "document": "Morningstar DBRS Commentary",
       "dates": "September 2026 surveillance; published 23 October 2026",
       "location": "dbrs.morningstar.com",
       "url": "https://dbrs.morningstar.com/insights/commentary/491947/monthly-north-american-cmbs-rating-action-summary-september-2026"
+    },
+    {
+      "id": "DBRS-DQ-2026-09",
+      "name": "U.S. CMBS Delinquency Analysis Report -- September 2026",
+      "document": "Morningstar DBRS Commentary",
+      "dates": "September 2026 observation; published 26 October 2026",
+      "location": "dbrs.morningstar.com",
+      "url": "https://dbrs.morningstar.com/insights/commentary/492045/us-cmbs-delinquency-analysis-report-september-2026-delinquency-rate-eases-special-servicing-rates-remain-elevated-liquidation-volume-increases"
     }
   ]
 }
