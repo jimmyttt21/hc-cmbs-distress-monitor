@@ -1,1 +1,406 @@
-PLACEHOLDER_WILL_REPLACE
+{
+  "meta": {
+    "firm": "Hamilton Capital",
+    "title": "CMBS Distress Monitor",
+    "as_of": "2026-10",
+    "compiled": "2026-11-23",
+    "history_policy": "Only verified public prints. Missing months are omitted, not interpolated.",
+    "alert_mom_bps": 25,
+    "alert_3m_bps": 50,
+    "as_of_note": "Newest verified observation period in the file is October 2026 (Trepp delinquency, special servicing, and CRED iQ distress). Not the compile date. No November 2026 Trepp delinquency or special servicing print verified as of this compile."
+  },
+  "series": {
+    "trepp_overall": {
+      "name": "Trepp US CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Headline Trepp CMBS delinquency rate. Performing matured balloons are excluded from the headline rate.",
+      "points": [
+        {"date": "2026-08", "value": 7.85},
+        {"date": "2026-09", "value": 8.02},
+        {"date": "2026-10", "value": 7.87}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_serious": {
+      "name": "Trepp serious delinquency (60+, foreclosure, REO, non-performing balloon)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Seriously delinquent rate as defined by Trepp.",
+      "points": [
+        {"date": "2026-08", "value": 7.69},
+        {"date": "2026-09", "value": 7.87},
+        {"date": "2026-10", "value": 7.71}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_performing_balloon": {
+      "name": "Trepp performing matured balloon",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Loans past maturity date but current on interest. Separate from headline delinquency.",
+      "points": [
+        {"date": "2026-09", "value": 1.64},
+        {"date": "2026-10", "value": 1.69}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_office": {
+      "name": "Trepp office CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-08", "value": 12.00},
+        {"date": "2026-09", "value": 12.16},
+        {"date": "2026-10", "value": 12.33}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_multifamily": {
+      "name": "Trepp multifamily CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-08", "value": 7.69},
+        {"date": "2026-09", "value": 8.04},
+        {"date": "2026-10", "value": 8.09}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_retail": {
+      "name": "Trepp retail CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-08", "value": 7.20},
+        {"date": "2026-09", "value": 6.58},
+        {"date": "2026-10", "value": 7.21}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_lodging": {
+      "name": "Trepp lodging CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-08", "value": 5.84},
+        {"date": "2026-09", "value": 6.18},
+        {"date": "2026-10", "value": 5.94}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_industrial": {
+      "name": "Trepp industrial CMBS delinquency (30+ days)",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-08", "value": 1.14},
+        {"date": "2026-09", "value": 1.14},
+        {"date": "2026-10", "value": 1.10}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_special_servicing": {
+      "name": "Trepp CMBS special servicing rate",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Overall special servicing rate.",
+      "points": [
+        {"date": "2026-09", "value": 11.49},
+        {"date": "2026-10", "value": 11.74}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_ss_office": {
+      "name": "Trepp office special servicing",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-09", "value": 16.85},
+        {"date": "2026-10", "value": 16.60}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_ss_multifamily": {
+      "name": "Trepp multifamily special servicing",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-09", "value": 8.54},
+        {"date": "2026-10", "value": 9.22}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_ss_retail": {
+      "name": "Trepp retail special servicing",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-09", "value": 13.84},
+        {"date": "2026-10", "value": 13.71}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_ss_lodging": {
+      "name": "Trepp lodging special servicing",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-09", "value": 8.95},
+        {"date": "2026-10", "value": 10.17}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_ss_industrial": {
+      "name": "Trepp industrial special servicing",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-09", "value": 1.23},
+        {"date": "2026-10", "value": 1.27}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "trepp_ss_mixed_use": {
+      "name": "Trepp mixed-use special servicing",
+      "vendor": "Trepp LLC",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "",
+      "points": [
+        {"date": "2026-09", "value": 13.17},
+        {"date": "2026-10", "value": 13.61}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "mba_cmbs_dq": {
+      "name": "MBA Commercial Delinquency Report CMBS (30+ or REO)",
+      "vendor": "Mortgage Bankers Association",
+      "frequency": "quarterly",
+      "unit": "percent",
+      "notes": "From MBA Commercial Delinquency Report. Different from CREF Loan Performance Survey.",
+      "points": [
+        {"date": "2026-Q2", "value": 6.53}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "mba_cref_cmbs_dq": {
+      "name": "MBA CREF Loan Performance Survey CMBS (30+ days)",
+      "vendor": "Mortgage Bankers Association",
+      "frequency": "quarterly",
+      "unit": "percent",
+      "notes": "MBA CREF Loan Performance Survey. Definition and sample differ from Commercial Delinquency Report.",
+      "points": [
+        {"date": "2026-Q3", "value": 4.97}
+      ],
+      "stale": false,
+      "stale_note": ""
+    },
+    "crediq_distress": {
+      "name": "CRED iQ conduit and SASB distress (delinquent, past maturity, or special servicing)",
+      "vendor": "CRED iQ",
+      "frequency": "monthly",
+      "unit": "percent",
+      "notes": "Distress defined as balance 30+ days delinquent, past maturity (performing or not), or in special servicing. Conduit and SASB only.",
+      "points": [
+        {"date": "2026-10", "value": 11.2}
+      ],
+      "stale": false,
+      "stale_note": ""
+    }
+  },
+  "conclusions": [
+    "Stock: Trepp 30+ delinquency was 7.87 percent (down 15 bp from September), serious delinquency 7.71 percent (down 16 bp), special servicing 11.74 percent (up 25 bp to highest since December 2012), and performing matured balloon 1.69 percent in October 2026. CRED iQ distress rate was 11.2 percent in October 2026 for conduit and SASB.",
+    "Flow: $3.47 billion became newly delinquent in October while $4.12 billion of previously delinquent loans cured or paid off; the 10 largest newly delinquent loans totaled $1.87 billion and were 67 percent office by balance. Special servicing transfers totaled $3.01 billion across 46 loans.",
+    "Wall: Including performing matured balloons, the Trepp rate was 9.56 percent in October, down 10 bp from September. November private-label hard maturities total $4.42 billion across 201 loan pieces."
+  ],
+  "withheld": [
+    "No conclusion: MBA Commercial Delinquency Report Q3 last verified none (different survey series verified instead).",
+    "No conclusion: Mixed-use delinquency not published in the October Trepp public delinquency table.",
+    "No conclusion: Trepp November 2026 delinquency and special servicing last verified none (October is latest verified)."
+  ],
+  "events": [
+    {
+      "date": "2026-10",
+      "type": "Newly delinquent",
+      "detail": "The 10 largest newly delinquent loans totaled $1.87 billion and were 67 percent office by balance. Largest was the $384.29 million NCMS 2019-MILE loan against Wilshire Courtyard in Los Angeles. $4.12 billion of previously delinquent loans cured or paid off; $3.47 billion became delinquent.",
+      "source": "Trepp CMBS Delinquency Report October 2026"
+    },
+    {
+      "date": "2026-10",
+      "type": "Special servicing transfer",
+      "detail": "$3.01 billion transferred to special servicing across 46 loans. Largest: $745.7 million Project Prime hotel portfolio, $517.7 million Blackjack multifamily portfolio (reached fully extended maturity October 9), $302.2 million Hyatt Regency Waikiki, $285 million Gateways mixed-use in Newark. About 45 percent of notable balance beyond the two largest due to imminent balloon or maturity defaults.",
+      "source": "Trepp CMBS Special Servicing Report October 2026 / TreppTalk November 9, 2026"
+    },
+    {
+      "date": "2026-10",
+      "type": "Newly delinquent or special servicing",
+      "detail": "CRED iQ property alerts flagged $4.5 billion of conduit and SASB CMBS debt as newly delinquent or newly in special servicing in October, 93 percent of it past maturity or within six months of it. Office $1.5 billion, hotels $1.1 billion, retail $0.7 billion, industrial $0.5 billion.",
+      "source": "CRED iQ Blog, CMBS Distress Shifts Away From New York, October 29, 2026"
+    }
+  ],
+  "ratings": [
+    {
+      "date": "2026-10-23",
+      "agency": "Morningstar DBRS",
+      "action": "September 2026 surveillance summary",
+      "detail": "Reviewed 44 North American CMBS deals. Actions on 470 classes: 355 confirmations, 93 downgrades, 13 upgrades, 9 Under Review Negative. Downgrades driven by higher projected losses on specially serviced loans and underperforming assets, with office properties driving significant pressure.",
+      "document": "Monthly North American CMBS Rating Action Summary: September 2026",
+      "url": "https://dbrs.morningstar.com/insights/commentary/491947/monthly-north-american-cmbs-rating-action-summary-september-2026"
+    },
+    {
+      "date": "2026-10-26",
+      "agency": "Morningstar DBRS",
+      "action": "September 2026 delinquency analysis",
+      "detail": "Delinquency rate for loans packaged in U.S. CMBS transactions dropped to 8.74 percent in September 2026, a decrease of 13 basis points from August 2026.",
+      "document": "U.S. CMBS Delinquency Analysis Report -- September 2026",
+      "url": "https://dbrs.morningstar.com/insights/commentary/492045/us-cmbs-delinquency-analysis-report-september-2026-delinquency-rate-eases-special-servicing-rates-remain-elevated-liquidation-volume-increases"
+    },
+    {
+      "date": "2026-11-11",
+      "agency": "Morningstar DBRS",
+      "action": "Downgrade on MSBAM 2012-CKSV",
+      "detail": "Downgraded Class A-2 to B (low) (sf) from BBB (low) (sf) and Class X-A to B (sf) from BBB (sf). Confirmed other classes. Negative trends on A-2 and X-A. Driven by increased loss expectations on remaining Sunvalley Shopping Center loan (projected $88.5 million loss).",
+      "document": "Morningstar DBRS Downgrades Credit Ratings on Two Classes of MSBAM Commercial Mortgage Securities Trust 2012-CKSV",
+      "url": "https://dbrs.morningstar.com/research/493306/morningstar-dbrs-downgrades-credit-ratings-on-two-classes-of-msbam-commercial-mortgage-securities-trust-2012-cksv"
+    },
+    {
+      "date": "2026-11-20",
+      "agency": "Morningstar DBRS",
+      "action": "Discontinuations",
+      "detail": "Discontinued ratings on remaining classes of Morgan Stanley Bank of America Merrill Lynch Trust 2013-C7 (repaid with October 2026 remittance) and on three mortgage loans (Morguard Corporation & 131 Queen Street Limited, Hide-Away Storage Holdings LLC, Maroa Park Apartments, a California LP).",
+      "document": "Morningstar DBRS Discontinues Credit Ratings For One CMBS Transaction and Three Mortgage Loans",
+      "url": "https://dbrs.morningstar.com/research/494118/morningstar-dbrs-discontinues-credit-ratings-for-one-cmbs-transaction-and-three-mortgage-loans"
+    }
+  ],
+  "sources": [
+    {
+      "id": "T-DQ-2026-10",
+      "name": "Trepp CMBS Delinquency Report October 2026",
+      "document": "PDF research report",
+      "dates": "October 2026 observation; published early November 2026",
+      "location": "Trepp.com",
+      "url": "https://www.trepp.com/hubfs/Trepp%20CMBS%20Delinquency%20Report%20October%202026.pdf"
+    },
+    {
+      "id": "T-SS-2026-10",
+      "name": "CMBS Special Servicing Rate Rises 25 Basis Points to 11.74% in October 2026",
+      "document": "TreppTalk research note and Special Servicing Report",
+      "dates": "October 2026 observation; published 9 November 2026",
+      "location": "Trepp.com",
+      "url": "https://www.trepp.com/trepptalk/cmbs-special-servicing-rate-rises-25-basis-points-to-11.74-in-october-2026"
+    },
+    {
+      "id": "T-MAT-2026-11",
+      "name": "$4.42 Billion of Private-Label CMBS Debt Reaches Hard Maturity in November",
+      "document": "TreppTalk research note",
+      "dates": "November 2026 hard maturities; published 12 November 2026",
+      "location": "Trepp.com",
+      "url": "https://www.trepp.com/trepptalk/cmbs-hard-maturities-november-2026"
+    },
+    {
+      "id": "MBA-Q2-2026",
+      "name": "Commercial and Multifamily Mortgage Delinquencies Mixed in Second-Quarter 2026",
+      "document": "MBA Research Press Release",
+      "dates": "Q2 2026 observation; published 28 September 2026",
+      "location": "MBA.org",
+      "url": "https://www.mba.org/news-and-research/newsroom/news/2026/09/28/commercial-and-multifamily-mortgage-delinquencies-mixed-in-second-quarter-2026"
+    },
+    {
+      "id": "MBA-CREF-Q3-2026",
+      "name": "Delinquency Rates for Commercial Properties Increased in the Third Quarter of 2026",
+      "document": "MBA CREF Loan Performance Survey Press Release",
+      "dates": "Q3 2026 observation (as of September 30, 2026); published 27 October 2026",
+      "location": "MBA.org",
+      "url": "https://www.mba.org/news-and-research/newsroom/news/2026/10/27/delinquency-rates-for-commercial-properties-increased-in-the-third-quarter-of-2026"
+    },
+    {
+      "id": "CREDIQ-2026-10",
+      "name": "CMBS Distress Shifts Away From New York",
+      "document": "CRED iQ Blog research note",
+      "dates": "October 2026 remittance; published 29 October 2026",
+      "location": "cred-iq.com",
+      "url": "https://cred-iq.com/blog/2026/10/29/cmbs-distress-by-metro-property-type/"
+    },
+    {
+      "id": "DBRS-SEP-2026",
+      "name": "Monthly North American CMBS Rating Action Summary: September 2026",
+      "document": "Morningstar DBRS Commentary",
+      "dates": "September 2026 surveillance; published 23 October 2026",
+      "location": "dbrs.morningstar.com",
+      "url": "https://dbrs.morningstar.com/insights/commentary/491947/monthly-north-american-cmbs-rating-action-summary-september-2026"
+    },
+    {
+      "id": "DBRS-DQ-2026-09",
+      "name": "U.S. CMBS Delinquency Analysis Report -- September 2026",
+      "document": "Morningstar DBRS Commentary",
+      "dates": "September 2026 observation; published 26 October 2026",
+      "location": "dbrs.morningstar.com",
+      "url": "https://dbrs.morningstar.com/insights/commentary/492045/us-cmbs-delinquency-analysis-report-september-2026-delinquency-rate-eases-special-servicing-rates-remain-elevated-liquidation-volume-increases"
+    },
+    {
+      "id": "DBRS-2026-11-11",
+      "name": "Morningstar DBRS Downgrades Credit Ratings on Two Classes of MSBAM Commercial Mortgage Securities Trust 2012-CKSV",
+      "document": "Morningstar DBRS Research Press Release",
+      "dates": "November 11, 2026",
+      "location": "dbrs.morningstar.com",
+      "url": "https://dbrs.morningstar.com/research/493306/morningstar-dbrs-downgrades-credit-ratings-on-two-classes-of-msbam-commercial-mortgage-securities-trust-2012-cksv"
+    },
+    {
+      "id": "DBRS-2026-11-20",
+      "name": "Morningstar DBRS Discontinues Credit Ratings For One CMBS Transaction and Three Mortgage Loans",
+      "document": "Morningstar DBRS Research Press Release",
+      "dates": "November 20, 2026",
+      "location": "dbrs.morningstar.com",
+      "url": "https://dbrs.morningstar.com/research/494118/morningstar-dbrs-discontinues-credit-ratings-for-one-cmbs-transaction-and-three-mortgage-loans"
+    },
+    {
+      "id": "T-DQ-2026-09",
+      "name": "Trepp CMBS Delinquency Report September 2026",
+      "document": "PDF research report",
+      "dates": "September 2026 observation; published early October 2026",
+      "location": "Trepp.com",
+      "url": "https://www.trepp.com/hubfs/Trepp%20CMBS%20Delinquency%20Report%20September%202026.pdf"
+    }
+  ]
+}
